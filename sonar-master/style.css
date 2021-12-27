@@ -1753,6 +1753,28 @@ img {
   background-color: transparent;
 }
 
+
+.form-controlMy {
+  width: 85%;
+  height: 60px;
+  padding: 0 15px;
+  border: none;
+  border-bottom: 1px solid;
+  border-color: #c0c0c0;
+  border-radius: 0;
+  font-size: 12px;
+  font-style: italic;
+  color: #2f2f2f;
+  background-color: transparent;
+}
+
+
+
+
+
+
+
+
 .contact-form .form-control:focus, .contact-form .form-control:hover {
   box-shadow: none;
 }

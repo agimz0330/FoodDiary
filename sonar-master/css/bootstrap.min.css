@@ -578,6 +578,21 @@ pre code {
     padding-left: 15px
 }
 
+
+.col-md-4my{
+    position: relative;
+    width: 25%;
+    min-height: 1px;
+    padding-right: 0px;
+    padding-left: 0px;
+    margin-left: 0ex;
+    
+}
+
+
+
+
+
 .col {
     -ms-flex-preferred-size: 0;
     flex-basis: 0;

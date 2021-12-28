@@ -122,12 +122,12 @@
     </header>
     <!-- ***** Header Area End ***** -->
 
-    <!-- ***** Hero Area Start ***** -->
+    <!-- ***** Hero Area Start ***** /
     <div class="hero-area d-flex align-items-center">
-        <!-- Hero Thumbnail -->
+        // Hero Thumbnail //
         <div class="hero-thumbnail equalize bg-img" style="background-image: url(img/bg-img/services.jpg);"></div>
 
-        <!-- Hero Content -->
+        // Hero Content //
         <div class="hero-content equalize">
             <div class="container-fluid h-100">
                 <div class="row h-100 align-items-center justify-content-center">
@@ -142,7 +142,7 @@
             </div>
         </div>
     </div>
-    <!-- ***** Hero Area End ***** -->
+    // ***** Hero Area End ***** -->
 
     <!--Here here-->
     <!-- ***** Services Area Start ***** -->
@@ -152,8 +152,12 @@
 
                 <!--個人資料 Input Start-->
                 <div class="contact-form text-center">
+                    <!--個人資料 Input Start
+                        ///其實Header還在(顏色)往下滑才出現黑框
                     <form action="#" method="post">
+                        
                         <div class="row">
+                            
                             <div class="col-12 col-md-4my">
                                 <div class="form-group">
                                     <input type="text" class="form-controlMy" id="contact-name" placeholder="Your Name"
@@ -180,8 +184,11 @@
                             <div class="col-12">
                                 <button type="submit" class="btn sonar-btn">Confirm</button>
                             </div>
+                            
                         </div>
+                        
                     </form>
+                    //個人資料 Input End-->
                 </div>
                 <!--個人資料 Input End-->
 
@@ -189,7 +196,30 @@
                 <div class="col-12 col-md-6 col-lg-4">
                     <div class="single-services-area wow fadeInUp" data-wow-delay="300ms">
                         <img src="img/icon-img/Icon_nameTag.png" alt="" height="50px" width="50px"> Name :
-                        <h5>Your Name :</h5>
+                        <h4>Your Name</h4>
+                        <!--Hidden Input-->
+                        <div class="contact-form text-center">
+                            <form action="#" method="post">
+                                <div class="row">
+                                    <div class="col-12 col-md-4my">
+                                        <div class="form-group">
+                                            <input type="text" class="form-controlMy" id="contact-name"
+                                                placeholder="Your Name" style="display: inline-block;" hidden>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <!--Hidden Input-->
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent vel tortor facilisis,
+                            volutpat nulla placerat, tincidunt mi. Nullam vel orci dui.</p>
+                    </div>
+                </div>
+                <!-- Single Services Area -->
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="single-services-area wow fadeInUp" data-wow-delay="600ms">
+                        <img src="img/icon-img/Icon_gender.png" alt="" height="50px" width="50px">
+                        <h4>Gender</h4>
                         <!--Hidden Input-->
                         <div class="contact-form text-center">
                             <form action="#" method="post">
@@ -210,18 +240,23 @@
                 </div>
                 <!-- Single Services Area -->
                 <div class="col-12 col-md-6 col-lg-4">
-                    <div class="single-services-area wow fadeInUp" data-wow-delay="600ms">
-                        <img src="img/core-img/vector.png" alt="">
-                        <h4>Studio Photograpy</h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent vel tortor facilisis,
-                            volutpat nulla placerat, tincidunt mi. Nullam vel orci dui.</p>
-                    </div>
-                </div>
-                <!-- Single Services Area -->
-                <div class="col-12 col-md-6 col-lg-4">
                     <div class="single-services-area wow fadeInUp" data-wow-delay="900ms">
                         <img src="img/core-img/pantone.png" alt="">
-                        <h4>Fashion Photograpy</h4>
+                        <h5>Fashion Photograpy</h5>
+                        <!--Hidden Input-->
+                        <div class="contact-form text-center">
+                            <form action="#" method="post">
+                                <div class="row">
+                                    <div class="col-12 col-md-4my">
+                                        <div class="form-group">
+                                            <input type="email" class="form-controlMy" id="contact-email"
+                                                placeholder="Your Email">
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <!--Hidden Input-->
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent vel tortor facilisis,
                             volutpat nulla placerat, tincidunt mi. Nullam vel orci dui.</p>
                     </div>
@@ -230,7 +265,21 @@
                 <div class="col-12 col-md-6 col-lg-4">
                     <div class="single-services-area wow fadeInUp" data-wow-delay="300ms">
                         <img src="img/core-img/video-player.png" alt="">
-                        <h4>Profesional Videos</h4>
+                        <h5>Profesional Videos</h5>
+                        <!--Hidden Input-->
+                        <div class="contact-form text-center">
+                            <form action="#" method="post">
+                                <div class="row">
+                                    <div class="col-12 col-md-4my">
+                                        <div class="form-group">
+                                            <input type="text" class="form-controlMy" id="contact-email"
+                                                placeholder="Subject">
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <!--Hidden Input-->
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent vel tortor facilisis,
                             volutpat nulla placerat, tincidunt mi. Nullam vel orci dui.</p>
                     </div>
@@ -239,9 +288,11 @@
                 <div class="col-12 col-md-6 col-lg-4">
                     <div class="single-services-area wow fadeInUp" data-wow-delay="600ms">
                         <img src="img/core-img/browsing.png" alt="">
-                        <h4>Landscapes</h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent vel tortor facilisis,
-                            volutpat nulla placerat, tincidunt mi. Nullam vel orci dui.</p>
+                        <h5>Landscapes</h5>
+                        <div class="form-group">
+                            <input type="text" class="form-controlMy" id="contact-name" placeholder="Your Name"
+                                style="display: inline-block;">
+                        </div>
                     </div>
                 </div>
                 <!-- Single Services Area -->

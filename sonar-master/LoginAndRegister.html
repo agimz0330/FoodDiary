@@ -28,6 +28,7 @@
     </div>
     <!-- Preloader End -->
 
+    <!-- 右側的 Menu bar -->
     <!-- ***** Main Menu Area Start ***** -->
     <div class="mainMenu d-flex align-items-center justify-content-between">
         <!-- Close Icon -->
@@ -48,19 +49,19 @@
                     </li>
                     <li class="nav-item">
                         <!-- 個人資料 -->
-                        <a class="nav-link" href="about-me.html">About Me</a>
+                        <a class="nav-link" href="personalInfo.html">About Me</a>
                     </li>
                     <li class="nav-item">
                         <!-- 瀏覽飲食紀錄 -->
-                        <a class="nav-link" href="services.html">Record</a>
+                        <a class="nav-link" href="myDiary.html">Record</a>
                     </li>
                     <li class="nav-item">
                         <!-- 我的群組 -->
-                        <a class="nav-link" href="portfolio.html">Group</a>
+                        <a class="nav-link" href="myGroup.html">Group</a>
                     </li>
                     <li class="nav-item">
                         <!-- 新增餐點 -->
-                        <a class="nav-link" href="blog.html">Add Diary</a>
+                        <a class="nav-link" href="addDiary.html">Add Diary</a>
                     </li>
                 </ul>
             </nav>
@@ -88,7 +89,7 @@
                         <div class="menu-content-area d-flex align-items-center">
                             <!-- Header Social Area -->
                             <div class="header-social-area d-flex align-items-center">
-                                <!-- 右上角的圖案 -->
+                                <!-- 右上角的圖案(新增、登入、登出) -->
                                 <a href="#" data-toggle="tooltip" data-placement="bottom" title="Add Diary"><i
                                         class="fa fa-plus" aria-hidden="true"></i></a>
                                 <a href="#" data-toggle="tooltip" data-placement="bottom" title="Sign-In"><i
@@ -114,6 +115,8 @@
         <!-- Portfolio Menu -->
         <div class="sonar-portfolio-menu">
             <div class="text-center portfolio-menu">
+
+                <!-- 選擇登入或註冊 -->
                 <button class="btn active" data-filter=".login">Login</button>
                 <button class="btn" data-filter=".register">Register</button>
             </div>
@@ -125,17 +128,15 @@
                 <div class="row h-100 align-items-center justify-content-center">
                     <div class="col-12 col-md-8">
                         <div class="line"></div>
-                        <!-- <div class="form-group login" >
-                            帳號 : <input type="text" class="form-controlMy" id="login-account" placeholder="Your Account">
-                            密碼 : <input type="text" class="form-controlMy" id="login-account" placeholder="Your Password">
-                        </div> -->
+
+                        <!-- 輸入帳號密碼 -->
                         <div class="form-group register">
-                            <p style="display: inline; font-size: 15px;"> &nbsp;帳&nbsp;&nbsp;&nbsp;號&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+                            <p style="display: inline; font-size: 15px;">&nbsp;帳&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;號&nbsp;&nbsp;&nbsp;</p>
                             <input type="text" class="form-controlMy" id="login-account" placeholder="Your Account">
-                            <br>
-                            <p style="display: inline;">&nbsp;密&nbsp;&nbsp;&nbsp;碼&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+                            <br><br>
+                            <p style="display: inline;">&nbsp;密&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;碼&nbsp;&nbsp;&nbsp;</p>
                             <input type="text" class="form-controlMy" id="login-account" placeholder="Your Password">
-                            <br>
+                            <br><br>
                             <p style="display: inline;">確認密碼&nbsp;&nbsp;</p>
                             <input type="text" class="form-controlMy" id="login-account"
                                 placeholder="Check Your Password">

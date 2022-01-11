@@ -1587,6 +1587,35 @@ img {
   font-size: 15px;
 }
 
+/*  for record post-date & edit-btn */
+.single_gallery_item .blog-post-thumbnail .post-date a {
+  position: absolute;
+  width: 45px;
+  height: auto;
+  padding: 8px 5px;
+  background-color: #000;
+  top: -20px;
+  left: 25px;
+  font-weight: 100;
+  color: #ffffff;
+  text-align: center;
+  line-height: 1.8;
+  font-size: 15px;
+  opacity: 0.8;
+}
+
+.single_gallery_item .edit-btn {
+  position: absolute;
+  right: 20px;
+  bottom: 0px;
+  text-transform: uppercase;
+  color: #2f2f2f;
+  font-size: 20px;
+  background-color: #ffffff;
+}
+
+/*  for record post-date & edit-btn end */
+
 .single-blog-area .blog-post-thumbnail .post-date a:hover, .single-blog-area .blog-post-thumbnail .post-date a:focus {
   font-weight: 100;
   font-size: 15px;

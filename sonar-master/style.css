@@ -1815,6 +1815,21 @@ img {
   color: #2f2f2f;
   background-color: transparent;
 }
+
+.info_textarea{
+  display: inline-block;
+  width: 85%;
+  /* height: 60px; */
+  padding: 15px;
+  border: none;
+  border-bottom: 1px solid;
+  border-color: #c0c0c0;
+  border-radius: 0;
+  font-size: 12px;
+  font-style: italic;
+  color: #2f2f2f;
+  background-color: transparent;
+}
 /* goal end*/
 
 .contact-form .form-control:focus, .contact-form .form-control:hover {

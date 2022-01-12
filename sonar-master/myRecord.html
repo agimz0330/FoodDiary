@@ -52,7 +52,7 @@
         </div>
         <!-- Logo Area -->
         <div class="logo-area">
-            <a href="index.html">Food Diary</a>
+            <a href="home.html">Food Diary</a>
         </div>
         <!-- Nav -->
         <div class="sonarNav">
@@ -60,7 +60,7 @@
                 <ul>
                     <!-- Menu 的內容 -->
                     <li class="nav-item active">
-                        <a class="nav-link" href="index.html">Home</a>
+                        <a class="nav-link" href="home.html">Home</a>
                     </li>
                     <li class="nav-item">
                         <!-- 個人資料 -->
@@ -72,7 +72,7 @@
                     </li>
                     <li class="nav-item">
                         <!-- 我的群組 -->
-                        <a class="nav-link" href="myGroup.html">Group</a>
+                        <a class="nav-link" href="group.html">Group</a>
                     </li>
                     <li class="nav-item">
                         <!-- 新增餐點 -->
@@ -98,19 +98,22 @@
                     <div class="menu-area d-flex justify-content-between">
                         <!-- Logo Area  -->
                         <div class="logo-area">
-                            <a href="index.html">Food Diary</a>
+                            <a href="home.html">Food Diary</a>
                         </div>
 
                         <div class="menu-content-area d-flex align-items-center">
                             <!-- Header Social Area -->
                             <div class="header-social-area d-flex align-items-center">
-                                <!-- 右上角的圖案 -->
-                                <a href="#" data-toggle="tooltip" data-placement="bottom" title="Add Diary"><i
-                                        class="fa fa-plus" aria-hidden="true"></i></a>
-                                <a href="#" data-toggle="tooltip" data-placement="bottom" title="Sign-In"><i
-                                        class="fa fa-sign-in" aria-hidden="true"></i></a>
-                                <a href="#" data-toggle="tooltip" data-placement="bottom" title="Sign-Out"><i
-                                        class="fa fa-sign-out" aria-hidden="true"></i></a>
+                                <!-- 右上角的圖案(新增、登入、登出) -->
+                                <!-- (+) -->
+                                <a href="addDiary.html" data-toggle="tooltip" data-placement="bottom" title="Add Diary">
+                                    <i class="fa fa-plus" aria-hidden="true"></i></a>
+                                <!-- (登入) -->
+                                <a href="#" id="logInBtn" data-toggle="tooltip" data-placement="bottom" title="Sign-In">
+                                    <i class="fa fa-sign-in" aria-hidden="true"></i></a>
+                                <!-- (登出) -->
+                                <a href="LoginAndRegister.html" id="logOutBtn" data-toggle="tooltip" data-placement="bottom" title="Sign-Out">
+                                    <i class="fa fa-sign-out" aria-hidden="true"></i></a>
                             </div>
                             <!-- Menu Icon -->
                             <span class="navbar-toggler-icon" id="menuIcon"></span>

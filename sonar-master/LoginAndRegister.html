@@ -40,7 +40,7 @@
         </div>
         <!-- Logo Area -->
         <div class="logo-area">
-            <a href="index.html">Food Diary</a>
+            <a href="home.html">Food Diary</a>
         </div>
         <!-- Nav -->
         <div class="sonarNav">
@@ -48,7 +48,7 @@
                 <ul>
                     <!-- Menu 的內容 -->
                     <li class="nav-item active">
-                        <a class="nav-link" href="index.html">Home</a>
+                        <a class="nav-link" href="home.html">Home</a>
                     </li>
                     <li class="nav-item">
                         <!-- 個人資料 -->
@@ -60,7 +60,7 @@
                     </li>
                     <li class="nav-item">
                         <!-- 我的群組 -->
-                        <a class="nav-link" href="myGroup.html">Group</a>
+                        <a class="nav-link" href="group.html">Group</a>
                     </li>
                     <li class="nav-item">
                         <!-- 新增餐點 -->
@@ -86,19 +86,22 @@
                     <div class="menu-area d-flex justify-content-between">
                         <!-- Logo Area  -->
                         <div class="logo-area">
-                            <a href="index.html">Food Diary</a>
+                            <a href="home.html">Food Diary</a>
                         </div>
 
                         <div class="menu-content-area d-flex align-items-center">
                             <!-- Header Social Area -->
                             <div class="header-social-area d-flex align-items-center">
                                 <!-- 右上角的圖案(新增、登入、登出) -->
-                                <a href="#" data-toggle="tooltip" data-placement="bottom" title="Add Diary"><i
-                                        class="fa fa-plus" aria-hidden="true"></i></a>
-                                <a href="#" data-toggle="tooltip" data-placement="bottom" title="Sign-In"><i
-                                        class="fa fa-sign-in" aria-hidden="true"></i></a>
-                                <a href="#" data-toggle="tooltip" data-placement="bottom" title="Sign-Out"><i
-                                        class="fa fa-sign-out" aria-hidden="true"></i></a>
+                                <!-- (+) -->
+                                <a href="addDiary.html" data-toggle="tooltip" data-placement="bottom" title="Add Diary">
+                                    <i class="fa fa-plus" aria-hidden="true"></i></a>
+                                <!-- (登入) -->
+                                <a href="#" id="logInBtn" data-toggle="tooltip" data-placement="bottom" title="Sign-In">
+                                    <i class="fa fa-sign-in" aria-hidden="true"></i></a>
+                                <!-- (登出) -->
+                                <a href="LoginAndRegister.html" id="logOutBtn" data-toggle="tooltip" data-placement="bottom" title="Sign-Out">
+                                    <i class="fa fa-sign-out" aria-hidden="true"></i></a>
                             </div>
                             <!-- Menu Icon -->
                             <span class="navbar-toggler-icon" id="menuIcon"></span>
@@ -120,8 +123,8 @@
             <div class="text-center portfolio-menu">
 
                 <!-- 選擇登入或註冊 -->
-                <button class="btn active" data-filter=".login">Login</button>
-                <button class="btn" data-filter=".register">Register</button>
+                <button id="chooseLogin" class="btn active">Login</button>
+                <button id="chooseRegister" class="btn">Register</button>
             </div>
         </div>
 
@@ -133,20 +136,24 @@
                         <div class="line"></div>
 
                         <!-- 輸入帳號密碼 -->
-                        <div class="form-group register">
+                        <div class="form-group">
+                            <!-- 帳號 -->
                             <p style="display: inline; font-size: 15px;">&nbsp;帳&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;號&nbsp;&nbsp;&nbsp;</p>
-                            <input type="text" class="form-controlMy" id="login-account" placeholder="Your Account">
-                            <br><br>
+                            <input type="text" class="login-controlMy" id="account" placeholder="Your Account">
+                            <p></p>
+                            
+                            <!-- 密碼 -->
                             <p style="display: inline;">&nbsp;密&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;碼&nbsp;&nbsp;&nbsp;</p>
-                            <input type="text" class="form-controlMy" id="login-account" placeholder="Your Password">
-                            <br><br>
-                            <p style="display: inline;">確認密碼&nbsp;&nbsp;</p>
-                            <input type="text" class="form-controlMy" id="login-account"
-                                placeholder="Check Your Password">
-                            <br>
+                            <input type="text" class="login-controlMy" id="password" placeholder="Your Password">
+                            <p></p>
+                            
+                            <!-- 確認密碼 -->
+                            <div id="confirmPasswardDiv" style="display: none">
+                                <p style="display: inline;">確認密碼</p>
+                                <input type="text" class="login-controlMy" id="confirmPassward" placeholder="Check Your Password">
+                                <p></p>
+                            </div>
                         </div>
-                        <br>
-                        <br>
                         <a href="#" class="btn sonar-btn white-btn">Confirm</a>
                     </div>
                 </div>
@@ -179,6 +186,9 @@
     <script src="js/plugins.js"></script>
     <!-- Active js -->
     <script src="js/active.js"></script>
+
+    <script src="barInit.js" type="text/javascript"></script>
+    <script src="loginPage.js" type="text/javascript"></script>
 
 </body>
 

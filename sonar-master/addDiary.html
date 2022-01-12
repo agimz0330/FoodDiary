@@ -9,7 +9,7 @@
     <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
     <!-- Title  -->
-    <title>Food Diary - post</title>
+    <title>Food Diary - add</title>
 
     <!-- Favicon  -->
     <link rel="icon" href="img/fdicon.ico">
@@ -52,7 +52,7 @@
         </div>
         <!-- Logo Area -->
         <div class="logo-area">
-            <a href="index.html">Food Diary</a>
+            <a href="home.html">Food Diary</a>
         </div>
         <!-- Nav -->
         <div class="sonarNav">
@@ -60,7 +60,7 @@
                 <ul>
                     <!-- Menu 的內容 -->
                     <li class="nav-item active">
-                        <a class="nav-link" href="index.html">Home</a>
+                        <a class="nav-link" href="home.html">Home</a>
                     </li>
                     <li class="nav-item">
                         <!-- 個人資料 -->
@@ -72,7 +72,7 @@
                     </li>
                     <li class="nav-item">
                         <!-- 我的群組 -->
-                        <a class="nav-link" href="myGroup.html">Group</a>
+                        <a class="nav-link" href="group.html">Group</a>
                     </li>
                     <li class="nav-item">
                         <!-- 新增餐點 -->
@@ -98,19 +98,22 @@
                     <div class="menu-area d-flex justify-content-between">
                         <!-- Logo Area  -->
                         <div class="logo-area">
-                            <a href="index.html">Food Diary</a>
+                            <a href="home.html">Food Diary</a>
                         </div>
 
                         <div class="menu-content-area d-flex align-items-center">
                             <!-- Header Social Area -->
                             <div class="header-social-area d-flex align-items-center">
-                                <!-- 右上角的圖案 -->
-                                <a href="#" data-toggle="tooltip" data-placement="bottom" title="Add Diary"><i
-                                        class="fa fa-plus" aria-hidden="true"></i></a>
-                                <a href="#" data-toggle="tooltip" data-placement="bottom" title="Sign-In"><i
-                                        class="fa fa-sign-in" aria-hidden="true"></i></a>
-                                <a href="#" data-toggle="tooltip" data-placement="bottom" title="Sign-Out"><i
-                                        class="fa fa-sign-out" aria-hidden="true"></i></a>
+                                <!-- 右上角的圖案(新增、登入、登出) -->
+                                <!-- (+) -->
+                                <a href="addDiary.html" data-toggle="tooltip" data-placement="bottom" title="Add Diary">
+                                    <i class="fa fa-plus" aria-hidden="true"></i></a>
+                                <!-- (登入) -->
+                                <a href="#" id="logInBtn" data-toggle="tooltip" data-placement="bottom" title="Sign-In">
+                                    <i class="fa fa-sign-in" aria-hidden="true"></i></a>
+                                <!-- (登出) -->
+                                <a href="LoginAndRegister.html" id="logOutBtn" data-toggle="tooltip" data-placement="bottom" title="Sign-Out">
+                                    <i class="fa fa-sign-out" aria-hidden="true"></i></a>
                             </div>
                             <!-- Menu Icon -->
                             <span class="navbar-toggler-icon" id="menuIcon"></span>
@@ -153,22 +156,48 @@
                     <br>
 
                     <h4>用餐時段</h4>
-                    <input type="radio" name="period" value="Breakfast" style="width: 7%; height: 30px;">
+                    <input type="radio" name="period" value="Breakfast" style="width: 7%; height: 25px;">
                     <i class="bi bi-brightness-alt-high">Breakfast</i>
-                    <input type="radio" name="period" value="Lunch" style="width: 7%; height: 30px;">
+                    <input type="radio" name="period" value="Lunch" style="width: 7%; height: 25px;">
                     <i class="bi bi-brightness-high">Lunch</i>
-                    <input type="radio" name="period" value="Dinner" style="width: 7%; height: 30px;">
+                    <input type="radio" name="period" value="Dinner" style="width: 7%; height: 25px;">
                     <i class="bi bi-cloud-moon">Dinner</i>
-                    <input type="radio" name="period" value="NightMeal" style="width: 7%; height: 30px;">
+                    <input type="radio" name="period" value="NightMeal" style="width: 7%; height: 25px;">
                     <i class="bi bi-moon">Night Meal</i>
-                    <input type="radio" name="period" value="Other" style="width: 7%; height: 30px;">
+                    <input type="radio" name="period" value="Other" style="width: 7%; height: 25px;">
                     <i class="bi bi-emoji-wink">Other</i>
                 
                     <P></P>
                     <br>
 
-                    <h4>評價</h4>
-                    <input type="number" class="form-controlMy" placeholder="(1~5)" max="5" min="1">
+                    <h4>餐點數量</h4>
+                    <input type="number" class="form-controlMy" placeholder="(份)">
+                    <P></P>
+                    <br>
+
+                    <h4>餐點熱量</h4>
+                    <input type="number" class="form-controlMy" placeholder=" (cal)">
+                    <P></P>
+                    <br>
+
+                    <h4>餐點金額</h4>
+                    <input type="number" class="form-controlMy" placeholder="$(元)">
+                    <P></P>
+                    <br>
+
+                    <h4>餐點評分</h4>
+                    <input type="range" max="5" min="1">
+                    <P></P>
+                    <br>
+
+                    <h4>餐點圖片</h4>
+                    <input type="file" accept="image/*">
+                    <P></P>
+                    <br>
+
+                    <h4>用餐日期</h4>
+                    <!-- 日期的格式為 yyyy-mm-dd -->
+                    <input type="date" class="form-controlMy">
                     <P></P>
                     <br>
 

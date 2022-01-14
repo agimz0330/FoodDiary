@@ -8,10 +8,13 @@ $(document).ready(function(){
     $("#chooseLogin").click(function (){
         act= "login";
         $("#confirmPasswardDiv").hide(); // 再次確認密碼 隱藏
+        $('#formm').attr("action","login.php")
     });
     $("#chooseRegister").click(function (){
         act= "register";
         $("#confirmPasswardDiv").show(); // 再次確認密碼 顯示
+        $('#formm').attr("action","register.php")
+
     });
 
     // 檢查輸入是否符合

@@ -1,4 +1,5 @@
 var act; // login / register
+var accountList= [];
 
 $(document).ready(function(){
     barInitial();
@@ -46,31 +47,68 @@ $(document).ready(function(){
         if(act== "login"){ // 登入
             if(isAccount(accStr)){
                 // 確認帳號密碼是否符合
+                /* 
+                ***********************************************************
+                (post)
+                {
+                    "act": "login",
+                    "account": accStr,
+                    "password": pwStr
+                }
 
-                // login success
-                // session clear accList
-                // get user data
-                location.href = "home.html";
+                (get)
+                {
+                    "status": true/ false, 
+                    "info": "Successfully log in."/ "Could not find the user.", 
+                    "mId": "fd000001"
+                }
+                ***********************************************************
+                */
 
-                // login failed
-                $("#passwordMsg").css("color", "brown");
-                $("#passwordMsg").html("帳號或密碼有誤！");
-
+                let data= {"status": true, "info": "Successfully log in.", "mId": "fd000001"};
+                
+                if(data.status== true){ // login success
+                    $("#errorMsg").html("");
+                    sessionStorage.setItem("mId", data.mId);
+                    location.href = "home.html";
+                }else{ // login failed
+                    $("#passwordMsg").css("color", "brown");
+                    $("#passwordMsg").html("帳號或密碼有誤！");
+                }
             }
         }
         else{ // 註冊
             var confirmPwStr= $("#confirmPassward").val();
             if(checkAccount(accStr)&& checkPassword(pwStr)&& DoubleCheckPassword(confirmPwStr)){
                 // 確認是否註冊成功
+                /* 
+                ***********************************************************
+                (post)
+                {
+                    "act": "register",
+                    "account": accStr,
+                    "password": pwStr
+                }
 
-                // 註冊 success
-                // session clear accList
-                // get user data
-                location.href = "home.html";
+                (get)
+                {
+                    "status": true/ false, 
+                    "info": "Successfully register."/ "Try again.", 
+                    "mId": "fd000001"
+                }
+                ***********************************************************
+                */
 
-                // 註冊 failed
-                $("#confirmPasswardMsg").css("color", "brown");
-                $("#confirmPasswardMsg").html("error"); // 顯示錯誤訊息
+                let data= {"status": true, "info": "Successfully log in.", "mId": "fd000001"};
+                
+                if(data.status== true){ // 註冊 success
+                    $("#errorMsg").html("");
+                    sessionStorage.setItem("mId", data.mId);
+                    location.href = "home.html";
+                }else{ // 註冊 failed
+                    $("#confirmPasswardMsg").css("color", "brown");
+                    $("#confirmPasswardMsg").html("error"); // 顯示錯誤訊息
+                }
             }
         }
     });
@@ -79,25 +117,54 @@ $(document).ready(function(){
 
 function initial(){
     act= "login";
+    
+    // get all account(acc List)
+    /* 
+    ***********************************************************
+    (post)
+    {
+        "act": "getAllAccount"
+    }
 
-    // get all account( acc List)
+    (get)
+    {
+        "status": true/ false, 
+        "accountList": ["account1", "account2", "account3", ...]
+    }
+    ***********************************************************
+    */
+    
+    let data= {"status": true, "accountList": ["aaa111", "aaa1234", "abcd123"]}; //test
+    if(data.status== true){
+        accountList= data.accountList;
+        $("#errorMsg").html("");
+    }else{
+        $("#errorMsg").html("Have something wrong...<br>請稍後重試");
+    }
 }
 
 function isAccount(accStr){
-    // if(accStr not in accountList){ // 無此帳號
-    //     $("#accountMsg").css("color", "brown");
-    //     $("#accountMsg").html("無此帳號");
-    // return false;
-    // }
-    // else{ // ok
-    //     $("#accountMsg").css("color", "darkolivegreen");
-    //     $("#accountMsg").html("<i class=\"bi bi-check2-all\"></i>");
-    // return ture;
-    // }
+    for(var i= 0; i< accountList.length; i++){
+        if(accStr== accountList[i]){ // 有此帳號
+            $("#accountMsg").css("color", "darkolivegreen");
+            $("#accountMsg").html("<i class=\"bi bi-check2-all\"></i>");
+            return true;
+        }
+    }
+    $("#accountMsg").css("color", "brown");
+    $("#accountMsg").html("無此帳號");
     return false;
 }
 
 function checkAccount(accStr){
+    for(var i= 0; i< accountList.length; i++){
+        if(accStr== accountList[i]){ // 重複帳號
+            $("#accountMsg").css("color", "brown");
+            $("#accountMsg").html("此帳號已有人使用");
+            return false;
+        }
+    }
+
     var regexp= /^\w{7,14}$/
     if(accStr.length< 7|| accStr.length> 14){ // 長度7~14
         $("#accountMsg").css("color", "brown");
@@ -109,11 +176,6 @@ function checkAccount(accStr){
         $("#accountMsg").html("只能輸入英文、數字或底線");
         return false;
     }
-    // else if(accStr in accountList){ // 重複帳號
-    //     $("#accountMsg").css("color", "brown");
-    //     $("#accountMsg").html("此帳號已有人使用");
-    // return false;
-    // }
     else{ // ok
         $("#accountMsg").css("color", "darkolivegreen");
         $("#accountMsg").html("<i class=\"bi bi-check2-all\"></i>");

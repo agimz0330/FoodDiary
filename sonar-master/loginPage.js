@@ -4,116 +4,115 @@ var accountList= [];
 $(document).ready(function(){
     barInitial();
     initial();
-
-    // 選擇: 登入 或 註冊
-    $("#chooseLogin").click(function (){
-        act= "login";
-        $("#confirmPasswardDiv").hide(); // 再次確認密碼 隱藏
-    });
-    $("#chooseRegister").click(function (){
-        act= "register";
-        $("#confirmPasswardDiv").show(); // 再次確認密碼 顯示
-    });
-
-    // 檢查輸入是否符合
-    $("#account").focusout(function (){
-        var accStr= $("#account").val();
-        
-        if(act== "register"){ // 註冊
-            var result= checkAccount(accStr);
-        }
-        else{ // 登入
-            var result= isAccount(accStr);
-        }
-    });
-    $("#password").focusout(function (){
-        if(act== "register"){ // 註冊
-            var pwStr= $("#password").val();
-            var result= checkPassword(pwStr);
-        }
-    });
-    $("#confirmPassward").focusout(function (){
-        if(act== "register"){ // 註冊
-            var confirmPwStr= $("#confirmPassward").val();
-            var result= DoubleCheckPassword(confirmPwStr);
-        }
-    });
-
-    // 點擊 確認
-    $("#confirmBtn").click(function (){
-        var accStr= $("#account").val();
-        var pwStr= $("#password").val();
-
-        if(act== "login"){ // 登入
-            if(isAccount(accStr)){
-                // 確認帳號密碼是否符合
-                /* 
-                ***********************************************************
-                (post)
-                {
-                    "act": "login",
-                    "account": accStr,
-                    "password": pwStr
-                }
-
-                (get)
-                {
-                    "status": true/ false, 
-                    "info": "Successfully log in."/ "Could not find the user.", 
-                    "mId": "fd000001"
-                }
-                ***********************************************************
-                */
-
-                let data= {"status": true, "info": "Successfully log in.", "mId": "fd000001"};
-                
-                if(data.status== true){ // login success
-                    $("#errorMsg").html("");
-                    sessionStorage.setItem("mId", data.mId);
-                    location.href = "home.html";
-                }else{ // login failed
-                    $("#passwordMsg").css("color", "brown");
-                    $("#passwordMsg").html("帳號或密碼有誤！");
-                }
-            }
-        }
-        else{ // 註冊
-            var confirmPwStr= $("#confirmPassward").val();
-            if(checkAccount(accStr)&& checkPassword(pwStr)&& DoubleCheckPassword(confirmPwStr)){
-                // 確認是否註冊成功
-                /* 
-                ***********************************************************
-                (post)
-                {
-                    "act": "register",
-                    "account": accStr,
-                    "password": pwStr
-                }
-
-                (get)
-                {
-                    "status": true/ false, 
-                    "info": "Successfully register."/ "Try again.", 
-                    "mId": "fd000001"
-                }
-                ***********************************************************
-                */
-
-                let data= {"status": true, "info": "Successfully log in.", "mId": "fd000001"};
-                
-                if(data.status== true){ // 註冊 success
-                    $("#errorMsg").html("");
-                    sessionStorage.setItem("mId", data.mId);
-                    location.href = "home.html";
-                }else{ // 註冊 failed
-                    $("#confirmPasswardMsg").css("color", "brown");
-                    $("#confirmPasswardMsg").html("error"); // 顯示錯誤訊息
-                }
-            }
-        }
-    });
-    
 })
+
+// 選擇: 登入 或 註冊
+$("#chooseLogin").click(function (){
+    act= "login";
+    $("#confirmPasswardDiv").hide(); // 再次確認密碼 隱藏
+});
+$("#chooseRegister").click(function (){
+    act= "register";
+    $("#confirmPasswardDiv").show(); // 再次確認密碼 顯示
+});
+
+// 檢查輸入是否符合
+$("#account").focusout(function (){
+    var accStr= $("#account").val();
+    
+    if(act== "register"){ // 註冊
+        var result= checkAccount(accStr);
+    }
+    else{ // 登入
+        var result= isAccount(accStr);
+    }
+});
+$("#password").focusout(function (){
+    if(act== "register"){ // 註冊
+        var pwStr= $("#password").val();
+        var result= checkPassword(pwStr);
+    }
+});
+$("#confirmPassward").focusout(function (){
+    if(act== "register"){ // 註冊
+        var confirmPwStr= $("#confirmPassward").val();
+        var result= DoubleCheckPassword(confirmPwStr);
+    }
+});
+
+// 點擊 確認
+$("#confirmBtn").click(function (){
+    var accStr= $("#account").val();
+    var pwStr= $("#password").val();
+
+    if(act== "login"){ // 登入
+        if(isAccount(accStr)){
+            // 確認帳號密碼是否符合
+            /* 
+            ***********************************************************
+            (post)
+            {
+                "act": "login",
+                "account": accStr,
+                "password": pwStr
+            }
+
+            (get)
+            {
+                "status": true/ false, 
+                "info": "Successfully log in."/ "Could not find the user.", 
+                "mId": "fd000001"
+            }
+            ***********************************************************
+            */
+
+            let data= {"status": true, "info": "Successfully log in.", "mId": "fd000001"};
+            
+            if(data.status== true){ // login success
+                $("#errorMsg").html("");
+                sessionStorage.setItem("mId", data.mId);
+                location.href = "home.html";
+            }else{ // login failed
+                $("#passwordMsg").css("color", "brown");
+                $("#passwordMsg").html("帳號或密碼有誤！");
+            }
+        }
+    }
+    else{ // 註冊
+        var confirmPwStr= $("#confirmPassward").val();
+        if(checkAccount(accStr)&& checkPassword(pwStr)&& DoubleCheckPassword(confirmPwStr)){
+            // 確認是否註冊成功
+            /* 
+            ***********************************************************
+            (post)
+            {
+                "act": "register",
+                "account": accStr,
+                "password": pwStr
+            }
+
+            (get)
+            {
+                "status": true/ false, 
+                "info": "Successfully register."/ "Try again.", 
+                "mId": "fd000001"
+            }
+            ***********************************************************
+            */
+
+            let data= {"status": true, "info": "Successfully log in.", "mId": "fd000001"};
+            
+            if(data.status== true){ // 註冊 success
+                $("#errorMsg").html("");
+                sessionStorage.setItem("mId", data.mId);
+                location.href = "home.html";
+            }else{ // 註冊 failed
+                $("#confirmPasswardMsg").css("color", "brown");
+                $("#confirmPasswardMsg").html("error"); // 顯示錯誤訊息
+            }
+        }
+    }
+});
 
 function initial(){
     act= "login";
@@ -138,7 +137,8 @@ function initial(){
     if(data.status== true){
         accountList= data.accountList;
         $("#errorMsg").html("");
-    }else{
+    }
+    else{
         $("#errorMsg").html("Have something wrong...<br>請稍後重試");
     }
 }

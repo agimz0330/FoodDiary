@@ -41,11 +41,14 @@ function initial(){
 
 // 修改個資 按鈕
 $("#edit-info-btn").click(function (){
-
+    $(".contact-form").show();
+    $("#save-info-btn").show();
 });
 // 儲存個資 按鈕
 $("#save-info-btn").click(function (){
-
+    $(".contact-form").hide();
+    $("#save-info-btn").hide();
+    // location.reload();
 });
 
 // 修改目標 按鈕
@@ -55,4 +58,5 @@ $("#edit-goal-btn").click(function (){
 // 儲存目標 按鈕
 $("#save-goal-btn").click(function (){
     $(".goal_textarea-control").hide();
+    // location.reload();
 });

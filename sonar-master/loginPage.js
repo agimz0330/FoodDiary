@@ -47,13 +47,14 @@ $("#confirmBtn").click(function (){
     var pwStr= $("#password").val();
 
     if(act== "login"){ // 登入
-        if(isAccount(accStr)){
+        // if(isAccount(accStr)){
             let cmd = {};
             cmd["act"]= "login";
             cmd["account"]= accStr;
             cmd["password"]= pwStr;
             $.post("login.php", cmd, function (data){
-                console.log("good");
+                data= JSON.parse(data);
+                console.log(data);
                 if(data.status== true){ // login success
                     $("#errorMsg").html("");
                     sessionStorage.setItem("mId", data.mId);
@@ -83,7 +84,7 @@ $("#confirmBtn").click(function (){
             */
 
             // let data= {"status": true, "info": "Successfully log in.", "mId": "fd000001"};
-        }
+        // }
     }
     else{ // 註冊
         var confirmPwStr= $("#confirmPassward").val();

@@ -53,5 +53,5 @@ else{
     
     // header("location:LoginAndRegister.html");
 }
-print_r($arr);
+print_r(json_encode($arr));
 ?>

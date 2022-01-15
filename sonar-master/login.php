@@ -15,24 +15,43 @@ exit();
 }
 mysqli_set_charset($db, "utf8");
 
-$q = mysqli_query($db,"SELECT * FROM member WHERE account=$acc");
-// echo $q;
+$q = mysqli_query($db,"SELECT * FROM member WHERE account=$acc AND password=$pwd");
+
 if($q){
     $row = mysqli_fetch_array($q);
-    if ($pwd == $row['password']){
-        $_SESSION['id'] = $row['mId'];
-        // echo $_SESSION['id'];
-        setcookie("id",$row['mId']);
-        echo "<script> sessionStorage.setItem('id',". "'" . $row['mId'] . "'" . "));</script>";
-        header("location:home.html");
+    if(empty($row)){
+        $arr = array(
+            'status' => false,
+            'msg' => "" ,
+        );
+    // }else if ($pwd == $row['password']){
+    //     $arr = array(
+    //         'status' => true,
+    //         'mId' => $row['mId'] ,
+    //     );
+    //     print_r($arr);
+    //     // $_SESSION['id'] = $row['mId'];
+    //     // echo $_SESSION['id'];
+    //     // setcookie("id",$row['mId']);
+
+    //     // echo "<script> sessionStorage.setItem('id',". "'" . $row['mId'] . "'" . "));</script>";
+    //     // header("location:home.html");
         
-    }
-    else{
-        header("location:LoginAndRegister.html");
+    } else{
+        $arr = array(
+            'status' => true,
+            'mId' => $row['mId'] ,
+        );
+        // header("location:LoginAndRegister.html");
     }
 }
 else{
-    header("location:LoginAndRegister.html");
+    $arr = array(
+        'status' => false,
+        'msg' => $db->error,
+    );
+    
+    // header("location:LoginAndRegister.html");
 }
-
+print_r($arr);
 ?>

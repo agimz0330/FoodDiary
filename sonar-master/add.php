@@ -1,6 +1,7 @@
 <?php
-$acc = $_POST['account'];
-$pwd = $_POST['password'];
+$shopname = $_POST['shopName'];
+$foodname = $_POST['foodName'];
+
 
 $serverName = "127.0.0.1";
 $userName = "root";
@@ -14,17 +15,10 @@ exit();
 }
 mysqli_set_charset($db, "utf8");
 
-$result = mysqli_query($db, "SELECT * FROM member");
+$result = mysqli_query($db, "SELECT * FROM food");
 $num_rows = mysqli_num_rows($result);
-$id ="fd";
-for ( $i=0 ; $i<6-strlen($num_rows) ; $i++ ) {
-    $id .="0";
-}
 $id.=strval($num_rows+1);
-
 $ins = "INSERT INTO member (mId,account,password,nickName) VALUES ('$id','$acc','$pwd','$acc')";
-
-
 $qq = mysqli_query($db,$ins);
 if(!$qq){
     $arr = array(

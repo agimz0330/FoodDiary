@@ -53,8 +53,6 @@ $("#confirmBtn").click(function (){
             cmd["account"]= accStr;
             cmd["password"]= pwStr;
             $.post("login.php", cmd, function (data){
-                data= JSON.parse(data);
-                console.log(data);
                 if(data.status== true){ // login success
                     $("#errorMsg").html("");
                     sessionStorage.setItem("mId", data.mId);
@@ -77,7 +75,7 @@ $("#confirmBtn").click(function (){
             (get)
             {
                 "status": true/ false, 
-                "info": "Successfully log in."/ "Could not find the user.", ...
+                "msg": "Successfully log in."/ "Could not find the user.", ...
                 "mId": "fd000001"
             }
             ***********************************************************
@@ -102,7 +100,7 @@ $("#confirmBtn").click(function (){
             (get)
             {
                 "status": true/ false, 
-                "info": "Successfully register."/ "Try again.", 
+                "msg": "Successfully register."/ "Try again.", 
                 "mId": "fd000001"
             }
             ***********************************************************

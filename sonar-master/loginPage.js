@@ -53,6 +53,8 @@ $("#confirmBtn").click(function (){
             cmd["account"]= accStr;
             cmd["password"]= pwStr;
             $.post("login.php", cmd, function (data){
+                data= JSON.parse(data);
+
                 if(data.status== true){ // login success
                     $("#errorMsg").html("");
                     sessionStorage.setItem("mId", data.mId);
@@ -112,6 +114,8 @@ $("#confirmBtn").click(function (){
            
             // let data= {"status": true, "info": "Successfully log in.", "mId": "fd000001"};
             $.post("register.php", cmd, function (data){
+                data= JSON.parse(data);
+                
                 if(data.status== true){ // 註冊 success
                     $("#errorMsg").html("");
                     sessionStorage.setItem("mId", data.mId);

@@ -1,12 +1,10 @@
-<?php 
+<?php
+
 session_start();
 $acc = $_POST['account'];
 $pwd = $_POST['password'];
 
-$serverName = "127.0.0.1";
-$userName = "root";
-$password = "";
-$databaseName = "fooddiary";
+require_once 'server.php';
 
 $db = mysqli_connect($serverName, $userName, $password, $databaseName);
 if (mysqli_connect_errno()) {

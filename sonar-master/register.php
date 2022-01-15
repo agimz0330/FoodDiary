@@ -1,11 +1,10 @@
 <?php
+
+try{
 $acc = $_POST['account'];
 $pwd = $_POST['password'];
 
-$serverName = "127.0.0.1";
-$userName = "root";
-$password = "";
-$databaseName = "fooddiary";
+require_once 'server.php';
 
 $db = mysqli_connect($serverName, $userName, $password, $databaseName);
 if (mysqli_connect_errno()) {
@@ -35,12 +34,15 @@ if(!$qq){
 }else{
     $arr = array(
         'status' => true,
-        'mId' => $id ,
+        'mId' => $row['mId'] ,
     );
 }
 $db->close();
+}catch(Exception $e){
+    print_r($e->getMessage());
+}
 
-print_r($arr);
+print_r(json_encode($arr));
 // echo json_encode($arr);
 // header("location:LoginAndRegister.html");
 ?>

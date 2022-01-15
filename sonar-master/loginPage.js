@@ -4,58 +4,19 @@ var accountList= [];
 $(document).ready(function(){
     barInitial();
     initial();
-})
+});
 
-<<<<<<< HEAD
-    // 選擇: 登入 或 註冊
-    $("#chooseLogin").click(function (){
-        act= "login";
-        $("#confirmPasswardDiv").hide(); // 再次確認密碼 隱藏
-        $('#formm').attr("action","login.php")
-    });
-    $("#chooseRegister").click(function (){
-        act= "register";
-        $("#confirmPasswardDiv").show(); // 再次確認密碼 顯示
-        $('#formm').attr("action","register.php")
-
-    });
-
-    // 檢查輸入是否符合
-    $("#account").focusout(function (){
-        var accStr= $("#account").val();
-        
-        if(act== "register"){ // 註冊
-            var result= checkAccount(accStr);
-        }
-        else{ // 登入
-            var result= isAccount(accStr);
-        }
-    });
-    $("#password").focusout(function (){
-        if(act== "register"){ // 註冊
-            var pwStr= $("#password").val();
-            var result= checkPassword(pwStr);
-        }
-    });
-    $("#confirmPassward").focusout(function (){
-        if(act== "register"){ // 註冊
-            var confirmPwStr= $("#confirmPassward").val();
-            var result= DoubleCheckPassword(confirmPwStr);
-        }
-    });
-
-    // 點擊 確認
-    $("#confirmBtn").click(function (){
-        var accStr= $("#account").val();
-=======
 // 選擇: 登入 或 註冊
 $("#chooseLogin").click(function (){
     act= "login";
     $("#confirmPasswardDiv").hide(); // 再次確認密碼 隱藏
+    $('#formm').attr("action","login.php")
 });
 $("#chooseRegister").click(function (){
     act= "register";
     $("#confirmPasswardDiv").show(); // 再次確認密碼 顯示
+    $('#formm').attr("action","register.php")
+
 });
 
 // 檢查輸入是否符合
@@ -71,7 +32,6 @@ $("#account").focusout(function (){
 });
 $("#password").focusout(function (){
     if(act== "register"){ // 註冊
->>>>>>> cc45218c4097b407eae0eab467b3d0bb26f3bbfb
         var pwStr= $("#password").val();
         var result= checkPassword(pwStr);
     }

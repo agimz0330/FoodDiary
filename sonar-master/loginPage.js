@@ -115,6 +115,7 @@ $("#confirmBtn").click(function (){
             // let data= {"status": true, "info": "Successfully log in.", "mId": "fd000001"};
             $.post("register.php", cmd, function (data){
                 data= JSON.parse(data);
+                console.log(data);
                 
                 if(data.status== true){ // 註冊 success
                     $("#errorMsg").html("");

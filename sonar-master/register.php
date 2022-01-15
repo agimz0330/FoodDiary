@@ -14,12 +14,12 @@ exit();
 mysqli_set_charset($db, "utf8");
 
 $result = mysqli_query($db, "SELECT * FROM member");
-$num_rows = mysqli_num_rows($result);
+$num_rows = mysqli_num_rows($result)+1;
 $id ="fd";
 for ( $i=0 ; $i<6-strlen($num_rows) ; $i++ ) {
     $id .="0";
 }
-$id.=strval($num_rows+1);
+$id.=strval($num_rows);
 
 $ins = "INSERT INTO member (mId,account,password,nickName) VALUES ('$id','$acc','$pwd','$acc')";
 
@@ -34,7 +34,7 @@ if(!$qq){
 }else{
     $arr = array(
         'status' => true,
-        'mId' => $row['mId'] ,
+        'mId' => $id ,
     );
 }
 $db->close();

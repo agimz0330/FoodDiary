@@ -13,7 +13,7 @@ exit();
 }
 mysqli_set_charset($db, "utf8");
 
-$q = mysqli_query($db,"SELECT * FROM member WHERE account=$acc AND password=$pwd");
+$q = mysqli_query($db,"SELECT * FROM member WHERE account='$acc' AND password='$pwd'");
 
 if($q){
     $row = mysqli_fetch_array($q);

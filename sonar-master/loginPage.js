@@ -10,12 +10,10 @@ $(document).ready(function(){
 $("#chooseLogin").click(function (){
     act= "login";
     $("#confirmPasswardDiv").hide(); // 再次確認密碼 隱藏
-    $('#formm').attr("action","login.php");
 });
 $("#chooseRegister").click(function (){
     act= "register";
     $("#confirmPasswardDiv").show(); // 再次確認密碼 顯示
-    $('#formm').attr("action","register.php");
 
 });
 
@@ -55,6 +53,7 @@ $("#confirmBtn").click(function (){
             cmd["account"]= accStr;
             cmd["password"]= pwStr;
             $.post("login.php", cmd, function (data){
+                console.log("good");
                 if(data.status== true){ // login success
                     $("#errorMsg").html("");
                     sessionStorage.setItem("mId", data.mId);

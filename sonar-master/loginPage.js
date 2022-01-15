@@ -10,12 +10,12 @@ $(document).ready(function(){
 $("#chooseLogin").click(function (){
     act= "login";
     $("#confirmPasswardDiv").hide(); // 再次確認密碼 隱藏
-    $('#formm').attr("action","login.php")
+    $('#formm').attr("action","login.php");
 });
 $("#chooseRegister").click(function (){
     act= "register";
     $("#confirmPasswardDiv").show(); // 再次確認密碼 顯示
-    $('#formm').attr("action","register.php")
+    $('#formm').attr("action","register.php");
 
 });
 
@@ -50,6 +50,20 @@ $("#confirmBtn").click(function (){
 
     if(act== "login"){ // 登入
         if(isAccount(accStr)){
+            let cmd = {};
+            cmd["act"]= "login";
+            cmd["account"]= accStr;
+            cmd["password"]= pwStr;
+            $.post("login.php", cmd, function (data){
+                if(data.status== true){ // login success
+                    $("#errorMsg").html("");
+                    sessionStorage.setItem("mId", data.mId);
+                    location.href = "home.html";
+                }else{ // login failed
+                    $("#passwordMsg").css("color", "brown");
+                    $("#passwordMsg").html("帳號或密碼有誤！");
+                }
+            });
             // 確認帳號密碼是否符合
             /* 
             ***********************************************************
@@ -63,22 +77,13 @@ $("#confirmBtn").click(function (){
             (get)
             {
                 "status": true/ false, 
-                "info": "Successfully log in."/ "Could not find the user.", 
+                "info": "Successfully log in."/ "Could not find the user.", ...
                 "mId": "fd000001"
             }
             ***********************************************************
             */
 
-            let data= {"status": true, "info": "Successfully log in.", "mId": "fd000001"};
-            
-            if(data.status== true){ // login success
-                $("#errorMsg").html("");
-                sessionStorage.setItem("mId", data.mId);
-                location.href = "home.html";
-            }else{ // login failed
-                $("#passwordMsg").css("color", "brown");
-                $("#passwordMsg").html("帳號或密碼有誤！");
-            }
+            // let data= {"status": true, "info": "Successfully log in.", "mId": "fd000001"};
         }
     }
     else{ // 註冊

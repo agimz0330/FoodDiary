@@ -94,9 +94,7 @@ function initial(){
             //                     .trigger('refresh.owl.carousel');
             // $(".owl-carousel").owlCarousel('add', onePost).owlCarousel('update');
             // $('.owl-carousel').trigger('refresh.owl.carousel');
-            console.log($("#aaa"));
             $("#aaa").append(onePost).trigger("refresh.owl.carousel");
-            console.log($("#aaa"));
             console.log("aaaaaa");
         }
         // for end.
@@ -115,7 +113,7 @@ function initial(){
             for(var point= 0; point< recordPost[i].foodPoint; point++) // 評價(1~5)
                 onePost+= "<i class=\"fa fa-star\"></i>&nbsp;"; // 星星
             
-            onePost+= "</span></h6><h4>"+ recordPost[i].shopName+ "&nbsp;<strong>"; // 店名
+            onePost+= "</span></h6><h4>"+ recordPost[i].shopName+ " <strong>"; // 店名
             onePost+= recordPost[i].foodName+ "</strong></h4><h6>"; // 餐點名
             onePost+= recordPost[i].foodCount+ "份&nbsp;"; // 數量
             onePost+= "<i class=\"fa fa-dollar\" style=\"color:darkgoldenrod\">"+ recordPost[i].foodCost+ "元</i>&nbsp;"; // 金額
@@ -140,7 +138,7 @@ function initial(){
             }
             onePost+= recordPost[i].foodNote+ "</p></div></div>"; // 備註
 
-            $(".sonar-portfolio").append(onePost);
+            $(".sonar-portfolio").append(onePost).isotope("appended", onePost).isotope("destroy");
         }
         // for end.
     }
@@ -205,7 +203,7 @@ $("#homeLoadmore").click(function (){
             for(var point= 0; point< recordPost[i].foodPoint; point++) // 評價(1~5)
                 onePost+= "<i class=\"fa fa-star\"></i>&nbsp;"; // 星星
             
-            onePost+= "</span></h6><h4>"+ recordPost[i].shopName+ "&nbsp;<strong>"; // 店名
+            onePost+= "</span></h6><h4>"+ recordPost[i].shopName+ " <strong>"; // 店名
             onePost+= recordPost[i].foodName+ "</strong></h4><h6>"; // 餐點名
             onePost+= recordPost[i].foodCount+ "份&nbsp;"; // 數量
             onePost+= "<i class=\"fa fa-dollar\" style=\"color:darkgoldenrod\">"+ recordPost[i].foodCost+ "元</i>&nbsp;"; // 金額
@@ -230,8 +228,8 @@ $("#homeLoadmore").click(function (){
             }
             onePost+= recordPost[i].foodNote+ "</p></div></div>"; // 備註
 
-            $(".sonar-portfolio").append(onePost).isotope("appended", onePost);
-            $(".sonar-portfolio").isotope("destroy");
+            $(".sonar-portfolio").append(onePost).isotope("appended", onePost).isotope("destroy");
+            // $("#projects").isotope("destroy");
         }
         // for end.
     }

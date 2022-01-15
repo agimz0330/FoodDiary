@@ -20,12 +20,12 @@
     $weight = "10";
 
     //update
-    $del = "UPDATE member SET age=200 WHERE mid=11112111";
-    $qqq = mysqli_query($db,$del);
-    if($qqq){
-        echo "oh";
-    }
-    else echo $db->error;
+    // $del = "UPDATE member SET age=200 WHERE mid=11112111";
+    // $qqq = mysqli_query($db,$del);
+    // if($qqq){
+    //     echo "oh";
+    // }
+    // else echo $db->error;
 
     //delete
     // $del = "DELETE FROM member WHERE mid=11112111";
@@ -45,14 +45,36 @@
         
 
     //select
-    // $q = mysqli_query($db,"SELECT * FROM member");
+    // // Sql = "SELECT * FROM 資料表1 INNER JOIN 資料表2 ON 資料表1.class = 資料表2.class"
+    // // $q = mysqli_query($db,"SELECT * FROM food JOIN record ON food.mId=record.mId WHERE food.mId='fd000001'");
+    // // $q = mysqli_query($db,"SELECT * FROM food JOIN record ON food.mId=record.mId AND food.foodName=record.foodName AND food.shopName=record.shopName WHERE food.mId='fd000001'");
+    // $q = mysqli_query($db,"SELECT * FROM food NATURAL JOIN record  WHERE food.mId='fd000001'");
     // // echo $q;
+    // //var_dump($q);       //無論何種型態都印出來
     // if($q){
     //     echo "yes";
-    //     $row = mysqli_fetch_array($q);
-    //     echo $row['mId'];
+    //     // $row = mysqli_fetch_array($q);
+    //     //Join
+    //     //Array ( [0] => fd000001 [mId] => fd000001 [1] => 珍珠鮮奶 [foodName] => 珍珠鮮奶 [2] => 天好茶 [shopName] => 天好茶 [3] => 500 [foodCal] => 500 [4] => 55 [foodCost] => 55 [5] => 3 [foodPoint] => 3 [6] => [foodImg] => [7] => Nope [foodNote] => Nope [8] => fd000001 [9] => 珍珠鮮奶 [10] => 天好茶 [11] => 2022-01-13 [mealDate] => 2022-01-13 [12] => 1 [foodCount] => 1 [13] => 0 [mealTime] => 0 ) 
+    //     //NATURAL JOIN
+    //     //Array ( [0] => fd000001 [mId] => fd000001 [1] => 珍珠鮮奶 [foodName] => 珍珠鮮奶 [2] => 天好茶 [shopName] => 天好茶 [3] => 500 [foodCal] => 500 [4] => 55 [foodCost] => 55 [5] => 3 [foodPoint] => 3 [6] => [foodImg] => [7] => Nope [foodNote] => Nope [8] => 2022-01-13 [mealDate] => 2022-01-13 [9] => 1 [foodCount] => 1 [10] => 0 [mealTime] => 0 ) 
+
+    //     $arr=array();
+    //     for($i=0;$i<$q->num_rows;$i++){
+    //         $row = mysqli_fetch_array($q);
+    //         // print_r($row);
+    //         $log=array("mId"=>"$row[0]","foodName"=>"$row[1]","shopName"=>"$row[2]","foodCal"=>"$row[3]","foodCost"=>"$row[4]","foodPoint"=>"$row[5]","foodImg"=>"$row[6]","foodNote"=>"$row[7]","mealDate"=>"$row[8]","foodCount"=>"$row[9]","mealTime"=>"$row[10]");
+    //         $arr[$i]=$log;
+    //     }
+    //     print_r($arr);
+    //     // echo $row['foodName'];
     // }
-    // else echo "fuck";
+    // else echo "no";
+    // //end Select
+
+
+
+
     $db->close();
 //mysqli_close()//斷掉連接
 ?>

@@ -113,7 +113,7 @@ $("#recordLoadmore").click(function (){
     (get)
     {
         "status": true/ false, 
-        "info": "Successfully show home page."/ "Can't show post.",
+        "msg": "Successfully show home page."/ "Can't show post.",
         "recordPost": [ // loadTimes x8 後的8格
             {"foodName": "餐點", "shopName": "店家", "mealTime": "b", "foodCount": 1, "foodCost": 50, "foodCal": 425, "foodPoint": (1~5), "foodNote": "備註", "foodImg": "???", "mealDate": "???"}, {}, {}, ...
         ]

@@ -105,17 +105,22 @@ $("#confirmBtn").click(function (){
             }
             ***********************************************************
             */
-
-            let data= {"status": true, "info": "Successfully log in.", "mId": "fd000001"};
-            
-            if(data.status== true){ // 註冊 success
-                $("#errorMsg").html("");
-                sessionStorage.setItem("mId", data.mId);
-                location.href = "home.html";
-            }else{ // 註冊 failed
-                $("#confirmPasswardMsg").css("color", "brown");
-                $("#confirmPasswardMsg").html("error"); // 顯示錯誤訊息
-            }
+           let cmd = {};
+           cmd["act"]= "register";
+           cmd["account"]= accStr;
+           cmd["password"]= pwStr;
+           
+            // let data= {"status": true, "info": "Successfully log in.", "mId": "fd000001"};
+            $.post("register.php", cmd, function (data){
+                if(data.status== true){ // 註冊 success
+                    $("#errorMsg").html("");
+                    sessionStorage.setItem("mId", data.mId);
+                    location.href = "home.html";
+                }else{ // 註冊 failed
+                    $("#confirmPasswardMsg").css("color", "brown");
+                    $("#confirmPasswardMsg").html("error"); // 顯示錯誤訊息
+                }
+            });
         }
     }
 });

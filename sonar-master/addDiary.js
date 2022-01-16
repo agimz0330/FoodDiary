@@ -11,11 +11,6 @@ function initial(){
         $(".latest-news-widget-area").html("...");
     }
     else{ // 已登入
-        let cmd= {"act": "getHotPost", "mId": mId};
-        $.post("login.php", cmd, function (data){
-            data= JSON.parse(data);
-            
-        });
         // get hot post
         /* 
         ***********************************************************
@@ -56,11 +51,11 @@ function initial(){
                 onePost+= "</div><div class=\"widget-post-content\"><a href=\"javascript: void(0)\">";
                 onePost+= hotFood[i].shopName+ " <strong>"+ hotFood[i].foodName+ "</strong></a>"; // 店名+餐點名
                 onePost+= "<br><i class=\"fa fa-dollar\" style=\"color:darkgoldenrod\">"+ hotFood[i].foodCost; // 金額
-                onePost+= "元 </i>>&nbsp;
-                    <i class="fa fa-fire" style="color:darkred">425 cal </i>
-                    <p>溫半</p>
-                </div>
-            </div>";
+                onePost+= "元</i>>&nbsp;<i class=\"fa fa-fire\" style=\"color:darkred\">"+ hotFood[i].foodCal; // 熱量
+                
+                var foodNote;
+                if(hotFood[i].foodNote.length> 10)
+                onePost+= " cal </i><p>"+ hotFood[i].foodNote+ "</p></div></div>"; // 備註
 
                 $(".widget-blog-post").append(onePost);
             }

@@ -16,6 +16,57 @@ function initial(){
         $(".section-heading h2").html("請先登入");
     }
     else{ // 已登入
+        // let cmd= {"act": "userInfo", "mId": mId, "loadTimes": 1};
+        // $.post("updateuserdata.php", cmd, function (data){
+            // data= JSON.parse(data);
+
+            if(data.status== true){
+                $("#nameMsg").html(data.name); // 暱稱
+                $("#name").val(data.name);
+                $("#accountMsg").html(data.account); // 帳號
+                
+                var pwStr= data.password.substring(0, 2);
+                for(var i= 2; i< data.password.length; i++) pwStr+= "*"; 
+                $("#passwordMsg").html(pwStr); // 密碼
+                $("#password").val(data.password);
+                $("#confirmPassward").val(data.password);
+                
+                $("#genderMsg").html(data.gender== 'F'? "female": "male"); // 性別
+                $("input[name= sex][value= '"+ data.gender+ "']").attr('checked', true); //radio 賦值
+                
+                $("#weightMsg").html(data.weight.toString()+ " (KG)"); // 體重
+                $("#weight").val(data.weight);
+                
+                $("#ageMsg").html(data.age.toString()+ " (Years old)"); // 年齡
+                $("#age").val(data.age);
+                
+                $(".section-heading h2").html("個人目標");
+    
+                for(var i= 0; i< 5; i++){
+                    var aGoal= "";
+                    if(i>= data.goal.length){
+                        $("#inputGoal"+ (i+ 1).toString()).val(aGoal);
+                        aGoal= "(未填寫)";
+                    }
+                    else{
+                        aGoal= data.goal[i];
+                        $("#inputGoal"+ (i+ 1).toString()).val(aGoal);
+                    }
+                    
+                    if(i== 0) $("#goalOne").html(aGoal);
+                    else if(i== 1) $("#goalTwo").html(aGoal);
+                    else if(i== 2) $("#goalThree").html(aGoal);
+                    else if(i== 3) $("#goalFour").html(aGoal);
+                    else $("#goalFive").html(aGoal);
+                }
+            }
+            else{
+                $(".sonar-services-area").html("<h1>Error...請稍後重試</h1>");
+                $(".type-goal-area").html("<h3>Error...請稍後重試</h3>");
+                $(".testimonial-slides").html("<h6>Error...請稍後重試</h6><h4>Error...請稍後重試</h4><h2>Error...請稍後重試</h2><h5>Error...請稍後重試</h5><h1>Error...請稍後重試</h1><h3>Error...請稍後重試</h3><br><p>:(((</p>");
+                $(".section-heading h2").html("Error...請稍後重試");
+            }
+        // });
         // get user info
         /* 
         ***********************************************************
@@ -48,52 +99,6 @@ function initial(){
                     "weight": 48.6, 
                     "goal": ["目標1<br>換行1", "目標2", "目標3", "目標4"]
                 };
-        if(data.status== true){
-            $("#nameMsg").html(data.name); // 暱稱
-            $("#name").val(data.name);
-            $("#accountMsg").html(data.account); // 帳號
-            
-            var pwStr= data.password.substring(0, 2);
-            for(var i= 2; i< data.password.length; i++) pwStr+= "*"; 
-            $("#passwordMsg").html(pwStr); // 密碼
-            $("#password").val(data.password);
-            $("#confirmPassward").val(data.password);
-            
-            $("#genderMsg").html(data.gender== 'F'? "female": "male"); // 性別
-            $("input[name= sex][value= '"+ data.gender+ "']").attr('checked', true); //radio 賦值
-            
-            $("#weightMsg").html(data.weight.toString()+ " (KG)"); // 體重
-            $("#weight").val(data.weight);
-            
-            $("#ageMsg").html(data.age.toString()+ " (Years old)"); // 年齡
-            $("#age").val(data.age);
-            
-            $(".section-heading h2").html("個人目標");
-
-            for(var i= 0; i< 5; i++){
-                var aGoal= "";
-                if(i>= data.goal.length){
-                    $("#inputGoal"+ (i+ 1).toString()).val(aGoal);
-                    aGoal= "(未填寫)";
-                }
-                else{
-                    aGoal= data.goal[i];
-                    $("#inputGoal"+ (i+ 1).toString()).val(aGoal);
-                }
-                
-                if(i== 0) $("#goalOne").html(aGoal);
-                else if(i== 1) $("#goalTwo").html(aGoal);
-                else if(i== 2) $("#goalThree").html(aGoal);
-                else if(i== 3) $("#goalFour").html(aGoal);
-                else $("#goalFive").html(aGoal);
-            }
-        }
-        else{
-            $(".sonar-services-area").html("<h1>Error...請稍後重試</h1>");
-            $(".type-goal-area").html("<h3>Error...請稍後重試</h3>");
-            $(".testimonial-slides").html("<h6>Error...請稍後重試</h6><h4>Error...請稍後重試</h4><h2>Error...請稍後重試</h2><h5>Error...請稍後重試</h5><h1>Error...請稍後重試</h1><h3>Error...請稍後重試</h3><br><p>:(((</p>");
-            $(".section-heading h2").html("Error...請稍後重試");
-        }
     }
 }
 
@@ -135,6 +140,9 @@ $("#save-info-btn").click(function (){
                 "age": weightNum,
                 "weight": ageNum};
 
+        $.post("updateuserdata.php", cmd, function (data){
+            data= JSON.parse(data);
+
         // edit user info
         /* 
         ***********************************************************
@@ -156,17 +164,18 @@ $("#save-info-btn").click(function (){
         }
         ***********************************************************
         */
-        let data= {"status": true};
-        if(data.status== true){
-            $(".contact-form").hide();
-            $("#save-info-btn").hide();
-            controlEditInfo= 0;
-            $("#edit-info-btn").html("修&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;改");
-            // location.reload();
-        }
-        else{
-            $("erroeMsg").html("error");
-        }
+        // let data= {"status": true};
+            if(data.status== true){
+                $(".contact-form").hide();
+                $("#save-info-btn").hide();
+                controlEditInfo= 0;
+                $("#edit-info-btn").html("修&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;改");
+                // location.reload();
+            }
+            else{
+                $("erroeMsg").html("error");
+            }
+        });
     }
 });
 

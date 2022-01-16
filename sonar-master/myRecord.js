@@ -62,7 +62,7 @@ function initial(){
             // for end.
         }
         else{
-            $("#errorMsg").html(data.info);
+            $("#errorMsg").html(data.msg);
         }
     });
     /* 
@@ -106,6 +106,8 @@ function initial(){
 
 $("#recordLoadmore").click(function (){
     loadTimes++;
+
+    var mId= sessionStorage.getItem("mId");
     let cmd= {"act": "getRecord", "mId": mId, "loadTimes": loadTimes};
     $.post("myrecords.php", cmd, function (data){
         data= JSON.parse(data);
@@ -156,7 +158,7 @@ $("#recordLoadmore").click(function (){
             // for end.
         }
         else{
-            $("#errorMsg").html(data.info);
+            $("#errorMsg").html(data.msg);
         }
     });
     /* 

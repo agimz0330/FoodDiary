@@ -11,12 +11,12 @@ function initial(){
     if(mId== null){ // 未登入
         sessionStorage.setItem("mId", "fdtest01");
     }
-    // get user post
+    // get hot post
     /* 
     ***********************************************************
     (post)
     {
-        "act": "homepagePost"
+        "act": "getHotPost"
         "mId": "fd000001"
     }
 
@@ -24,10 +24,28 @@ function initial(){
     {
         "status": true/ false, 
         "info": "Successfully show home page."/ "Can't show post.",
-        "hotFood": [ // 8格
+        "hotFood": [ // 5格
             {"foodName": "餐點", "shopName": "店家", "foodCost": 50, "foodCal": 425, "foodNote": "備註", "foodImg": "???"}, {}, {}, ...
-        ],
-        "recordPost": [ // 8格
+        ]
+    }
+    ***********************************************************
+    */
+
+    // 取得貼文
+    /* 
+    ***********************************************************
+    (post)
+    {
+        "act": "getRecord"
+        "mId": "fd000001"
+        "loadTimes": 0
+    }
+
+    (get)
+    {
+        "status": true/ false, 
+        "msg": "Successfully show home page."/ "Can't show post.",
+        "recordPost": [ // loadTimes x8 後的8格
             {"foodName": "餐點", "shopName": "店家", "mealTime": "b", "foodCount": 1, "foodCost": 50, "foodCal": 425, "foodPoint": (1~5), "foodNote": "備註", "foodImg": "???", "mealDate": "???"}, {}, {}, ...
         ]
     }
@@ -229,7 +247,6 @@ $("#homeLoadmore").click(function (){
             onePost+= recordPost[i].foodNote+ "</p></div></div>"; // 備註
 
             $(".sonar-portfolio").append(onePost).isotope("appended", onePost).isotope("destroy");
-            // $("#projects").isotope("destroy");
         }
         // for end.
     }

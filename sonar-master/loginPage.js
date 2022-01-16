@@ -4,6 +4,13 @@ var accountList= [];
 $(document).ready(function(){
     barInitial();
     initial();
+
+    document.onkeydown= function(event){
+        var e = event || window.event || arguments.callee.caller.arguments[0];
+        if(e && e.keyCode==13){
+            $("#confirmBtn").click();
+        }
+    };
 });
 
 // 選擇: 登入 或 註冊
@@ -115,7 +122,6 @@ $("#confirmBtn").click(function (){
             // let data= {"status": true, "info": "Successfully log in.", "mId": "fd000001"};
             $.post("register.php", cmd, function (data){
                 data= JSON.parse(data);
-                console.log(data);
                 
                 if(data.status== true){ // 註冊 success
                     $("#errorMsg").html("");
@@ -221,8 +227,6 @@ function checkPassword(pwStr){
 
 function DoubleCheckPassword(confirmPwStr){
     var pwStr= $("#password").val();
-    console.log(pwStr);
-    console.log(confirmPwStr);
     if(pwStr!= confirmPwStr){ // 密碼不一致
         $("#confirmPasswardMsg").css("color", "brown");
         $("#confirmPasswardMsg").html("請再次確認");

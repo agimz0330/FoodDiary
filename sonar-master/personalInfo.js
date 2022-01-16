@@ -139,10 +139,10 @@ $("#save-info-btn").click(function (){
                 "gender": genderStr,
                 "age": weightNum,
                 "weight": ageNum};
-
+        console.log(cmd);
         $.post("updateuserdata.php", cmd, function (data){
             data= JSON.parse(data);
-
+            console.log(data);
         // edit user info
         /* 
         ***********************************************************

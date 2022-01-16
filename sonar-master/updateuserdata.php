@@ -3,18 +3,16 @@
 $mId = $_POST['mId'];
 
 $pwd = $_POST['password'];
-$nickname = $_POST['nickName'];
+$nickname = $_POST['name'];
 $gender = $_POST['gender'];
 $age = $_POST['age'];
 $weight = $_POST['weight'];
-$username = $_POST['userName'];
 
 // $pwd ='aaa12345678';
 // $mId ='fd000001' ;
 // $nickname ='小黑' ;
 // $gender ='F' ;
 // $weight ='82' ;
-// $username ='陳小黑';
 // $age = '37';
 
 //////////////////////////////////////////
@@ -28,7 +26,7 @@ exit();
 mysqli_set_charset($db, "utf8");
 ///////////////////////////////////////////
 
-$q = mysqli_query($db,"UPDATE member SET age='$age',weight='$weight',password='$pwd',gender='$gender',userName='$username',nickName='$nickname' WHERE mid='$mId'");
+$q = mysqli_query($db,"UPDATE member SET age='$age',weight='$weight',password='$pwd',gender='$gender',nickName='$nickname' WHERE mid='$mId'");
 
 if($q)
 {

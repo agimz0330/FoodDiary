@@ -1,21 +1,21 @@
 <?php
 
-// $mId = $_POST['mId'];
+$mId = $_POST['mId'];
 
-// $pwd = $_POST['password'];
-// $nickname = $_POST['nickName'];
-// $gender = $_POST['gender'];
-// $age = $_POST['age'];
-// $weight = $_POST['weight'];
-// $username = $_POST['userName'];
+$pwd = $_POST['password'];
+$nickname = $_POST['nickName'];
+$gender = $_POST['gender'];
+$age = $_POST['age'];
+$weight = $_POST['weight'];
+$username = $_POST['userName'];
 
-$pwd ='aaa12345678';
-$mId ='fd000001' ;
-$nickname ='小黑' ;
-$gender ='F' ;
-$weight ='82' ;
-$username ='陳小黑';
-$age = '37';
+// $pwd ='aaa12345678';
+// $mId ='fd000001' ;
+// $nickname ='小黑' ;
+// $gender ='F' ;
+// $weight ='82' ;
+// $username ='陳小黑';
+// $age = '37';
 
 //////////////////////////////////////////
 require_once 'server.php';

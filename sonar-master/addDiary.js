@@ -1,4 +1,5 @@
 var imgSrc= "";
+var hotFood= [];
 var fileInput= document.querySelector("#foodImg");
 
 fileInput.addEventListener("change", function(event) { 
@@ -82,7 +83,7 @@ function initial(){
             ]
         };
         if(data.status== true){
-            let hotFood= data.hotFood;
+            hotFood= data.hotFood;
             for(var i= 0; i< hotFood.length; i++){
                 var onePost= "<div class=\"widget-single-blog-post d-flex align-items-start\">"+
                                 "<div class=\"widget-post-thumbnail pr-3\"><img src=\"";
@@ -247,11 +248,34 @@ $("#save-btn").click(function(){
         */
         let data= {"status": true, "msg": "Can't add."};
         if(data.status== true){
-            location.href = "home.html";
+            // location.href = "home.html";
         }
         else{
             $("#errorMsg").css("color", "brown");
             $("#errorMsg").html("Something wrong..."); // 
         }
+        // console.log(imgSrc);
     // });
+});
+
+$(".widget-blog-post").on("click", "a", function(e){ // 點擊常吃餐點
+    var nameStr=  $(this).text();
+    var nameList= nameStr.split(" ");
+    var foodIndex= -1;
+
+    for(var i= 0; i< hotFood.length; i++){
+        if(nameList[0]== hotFood[i].shopName && nameList[1]== hotFood[i].foodName){
+            foodIndex= i;
+            break;
+        }
+    }
+
+    if(foodIndex>= 0){
+        $("#shopName").val(hotFood[foodIndex].shopName);
+        $("#foodName").val(hotFood[foodIndex].foodName);
+        $("#foodCost").val(hotFood[foodIndex].foodCost);
+        $("#foodCal").val(hotFood[foodIndex].foodCal);
+        $("#foodNote").val(hotFood[foodIndex].foodNote);
+        $("#foodImgMsg").html("<br><img src= \""+ hotFood[foodIndex].foodImg+ "\" style=\"height:400px;\">");
+    }
 });

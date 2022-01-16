@@ -11,9 +11,27 @@ function initial(){
     if(mId== null){ // 未登入
         sessionStorage.setItem("mId", "fdtest01");
     }
-    let cmd= {"act": "getRecord", "mId": mId, "loadTimes": 1};
-    $.post("myrecords.php", cmd, function (data){
-        data= JSON.parse(data);
+    let data= { //test
+        "status": true, 
+        "info": "Successfully show home page.",
+        "recordPost": [ // 8格
+            {"foodName": "餐點", 
+            "shopName": "店家", 
+            "mealTime": "b", 
+            "foodCount": 1, 
+            "foodCost": 200, 
+            "foodCal": 1200, 
+            "foodPoint": 3, 
+            "foodNote": "備註備註備註備註備註備註", 
+            "foodImg": "img/portfolio-img/1.jpg", 
+            
+            "mealDate": "2012-07-03"}
+        ]
+    };
+
+    // let cmd= {"act": "getRecord", "mId": mId, "loadTimes": 1};
+    // $.post("myrecords.php", cmd, function (data){
+    //     data= JSON.parse(data);
 
         if(data.status== true){
             $("#errorMsg").html("");
@@ -26,7 +44,26 @@ function initial(){
                                     "<a class=\"gallery-img\" href=\"";
                 onePost+= recordPost[i].foodImg+ "\"><img src=\""+ recordPost[i].foodImg; // 餐點圖片?????
                 onePost+= "\"></a><div class=\"post-date\"><a href=\"#\">";
-                onePost+= recordPost[i].mealDate; // 日期(Jan 01 '09)(月 日 '年)
+
+                var mealDateStr= recordPost[i].mealDate; // 2012-07-03
+                var mealDate= "";
+                var monthStr= mealDateStr.substring(5, 7); // 07
+                if(monthStr== "01") mealDate+= "Jan";
+                else if(monthStr== "02") mealDate+= "Feb";
+                else if(monthStr== "03") mealDate+= "Mar";
+                else if(monthStr== "04") mealDate+= "Apr";
+                else if(monthStr== "05") mealDate+= "May";
+                else if(monthStr== "06") mealDate+= "Jun";
+                else if(monthStr== "07") mealDate+= "Jul";
+                else if(monthStr== "08") mealDate+= "Aug";
+                else if(monthStr== "09") mealDate+= "Sep";
+                else if(monthStr== "10") mealDate+= "Oct";
+                else if(monthStr== "11") mealDate+= "Nov";
+                else mealDate+= "Dec";
+                mealDate+= " "+ mealDateStr.substring(8, 10);
+                mealDate+= " \'"+ mealDateStr.substring(2, 4); // '12
+
+                onePost+= mealDate; // 日期(Jan 01 '09)(月 日 '年)
                 onePost+= "</a></div> <a href=\"javascript: void(0)\" class=\"edit-btn\"><i class=\"bi bi-trash\"></i></a> </div><div class=\"gallery-content\"><h6><span style=\"color:gold\">";
                 
                 for(var point= 0; point< recordPost[i].foodPoint; point++) // 評價(1~5)
@@ -64,7 +101,7 @@ function initial(){
         else{
             $("#errorMsg").html(data.msg);
         }
-    });
+    // });
     /* 
     ***********************************************************
     (post)
@@ -84,24 +121,6 @@ function initial(){
     }
     ***********************************************************
     */
-
-    let data= { //test
-        "status": true, 
-        "info": "Successfully show home page.",
-        "recordPost": [ // 8格
-            {"foodName": "餐點", 
-            "shopName": "店家", 
-            "mealTime": "b", 
-            "foodCount": 1, 
-            "foodCost": 200, 
-            "foodCal": 1200, 
-            "foodPoint": 3, 
-            "foodNote": "備註備註備註備註備註備註", 
-            "foodImg": "img/portfolio-img/1.jpg", 
-            "mealDate": "Jan 01 '05"}
-        ]
-    };
-    
 }
 
 $("#recordLoadmore").click(function (){
@@ -109,8 +128,26 @@ $("#recordLoadmore").click(function (){
 
     var mId= sessionStorage.getItem("mId");
     let cmd= {"act": "getRecord", "mId": mId, "loadTimes": loadTimes};
-    $.post("myrecords.php", cmd, function (data){
-        data= JSON.parse(data);
+
+    let data= { //test
+        "status": true, 
+        "info": "Successfully show home page.",
+        "recordPost": [ // 8格
+            {"foodName": "餐點2", 
+            "shopName": "店家2", 
+            "mealTime": "b", 
+            "foodCount": 1, 
+            "foodCost": 200, 
+            "foodCal": 1200, 
+            "foodPoint": 3, 
+            "foodNote": "備註備註備註備註備註備註", 
+            "foodImg": "img/portfolio-img/1.jpg", 
+            "mealDate": "2012-07-03"}
+        ]
+    };
+
+    // $.post("myrecords.php", cmd, function (data){
+    //     data= JSON.parse(data);
         if(data.status== true){
             $("#errorMsg").html("");
     
@@ -122,7 +159,26 @@ $("#recordLoadmore").click(function (){
                                     "<a class=\"gallery-img\" href=\"";
                 onePost+= recordPost[i].foodImg+ "\"><img src=\""+ recordPost[i].foodImg; // 餐點圖片?????
                 onePost+= "\"></a><div class=\"post-date\"><a href=\"#\">";
-                onePost+= recordPost[i].mealDate; // 日期(Jan 01 '09)(月 日 '年)
+                
+                var mealDateStr= recordPost[i].mealDate; // 2012-07-03
+                var mealDate= "";
+                var monthStr= mealDateStr.substring(5, 7); // 07
+                if(monthStr== "01") mealDate+= "Jan";
+                else if(monthStr== "02") mealDate+= "Feb";
+                else if(monthStr== "03") mealDate+= "Mar";
+                else if(monthStr== "04") mealDate+= "Apr";
+                else if(monthStr== "05") mealDate+= "May";
+                else if(monthStr== "06") mealDate+= "Jun";
+                else if(monthStr== "07") mealDate+= "Jul";
+                else if(monthStr== "08") mealDate+= "Aug";
+                else if(monthStr== "09") mealDate+= "Sep";
+                else if(monthStr== "10") mealDate+= "Oct";
+                else if(monthStr== "11") mealDate+= "Nov";
+                else mealDate+= "Dec";
+                mealDate+= " "+ mealDateStr.substring(8, 10);
+                mealDate+= " \'"+ mealDateStr.substring(2, 4); // '12
+
+                onePost+= mealDate; // 日期(Jan 01 '09)(月 日 '年)
                 onePost+= "</a></div> <a href=\"javascript: void(0)\" class=\"edit-btn\"><i class=\"bi bi-trash\"></i></a> </div><div class=\"gallery-content\"><h6><span style=\"color:gold\">";
                 
                 for(var point= 0; point< recordPost[i].foodPoint; point++) // 評價(1~5)
@@ -160,7 +216,7 @@ $("#recordLoadmore").click(function (){
         else{
             $("#errorMsg").html(data.msg);
         }
-    });
+    // });
     /* 
     ***********************************************************
     (post)
@@ -180,31 +236,52 @@ $("#recordLoadmore").click(function (){
     }
     ***********************************************************
     */
-
-   let data= { //test
-        "status": true, 
-        "info": "Successfully show home page.",
-        "recordPost": [ // 8格
-            {"foodName": "餐點2", 
-            "shopName": "店家2", 
-            "mealTime": "b", 
-            "foodCount": 1, 
-            "foodCost": 200, 
-            "foodCal": 1200, 
-            "foodPoint": 3, 
-            "foodNote": "備註備註備註備註備註備註", 
-            "foodImg": "img/portfolio-img/1.jpg", 
-            "mealDate": "Jan 01 '05"}
-        ]
-    };
-
 });
 
 $("#projects").on("click", ".edit-btn", function(e){ // 刪除一筆紀錄
     var mId= sessionStorage.getItem("mId");
     var mealDateStr= $(this).siblings("div").children("a").text(); // 日期(Jan 01 '09)
+    var mealDate= "20"+ mealDateStr.substring(8, 10)+ "-";
+    
+    var monthStr= mealDateStr.substring(0, 3);
+    if(monthStr== "Jan") mealDate+= "01";
+    else if(monthStr== "Feb") mealDate+= "02";
+    else if(monthStr== "Mar") mealDate+= "03";
+    else if(monthStr== "Apr") mealDate+= "04";
+    else if(monthStr== "May") mealDate+= "05";
+    else if(monthStr== "Jun") mealDate+= "06";
+    else if(monthStr== "Jul") mealDate+= "07";
+    else if(monthStr== "Aug") mealDate+= "08";
+    else if(monthStr== "Sep") mealDate+= "09";
+    else if(monthStr== "Oct") mealDate+= "10";
+    else if(monthStr== "Nov") mealDate+= "11";
+    else mealDate+= "12";
+    mealDate+= "-"+ mealDateStr.substring(4, 6);
+
     var nameStr= $(this).parent().siblings("div.gallery-content").children("h4").text(); // 店+餐(添好茶 紅豆鮮奶)
     var nameList= nameStr.split(" "); // nameList[0]= shopName, nameList[1]= foodName
+
+    let cmd= {
+        "act": "deleteRecord",
+        "mId": mId,
+        "shopName": nameList[0],
+        "foodName": nameList[1],
+        "mealDate": mealDate
+    };
+
+    // $.post("addrecords.php", cmd, function (data){
+        //     data= JSON.parse(data);
+        let data= {"status": true, "msg": "Can't add."};
+        if(data.status== true){
+            loadTimes= 1;
+            // location.reload();
+        }
+        else{
+            $("#recordLoadmore").attr('disabled', true);
+            console.log("Can't load.");
+        }
+        // console.log(imgSrc);
+    // });
 
     /* 
     ***********************************************************
@@ -213,7 +290,8 @@ $("#projects").on("click", ".edit-btn", function(e){ // 刪除一筆紀錄
         "act": "deleteRecord",
         "mId": mId,
         "shopName": nameList[0],
-        "foodName": nameList[1]
+        "foodName": nameList[1],
+        "mealDate": "2012-12-28"
     }
 
     (get)
@@ -222,8 +300,4 @@ $("#projects").on("click", ".edit-btn", function(e){ // 刪除一筆紀錄
     }
     ***********************************************************
     */
-    console.log(nameList[0]);
-    console.log(nameList[1]);
-    // loadTimes= 1;
-    // location.reload();
 });

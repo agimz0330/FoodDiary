@@ -1,7 +1,7 @@
 <?php
 
-///給user data
 $groupId = $_POST['groupId'];
+// $groupId = 'gp000001';
 
 // $mId = $_POST['mId'];
 // $mId ='fd000012';
@@ -27,12 +27,13 @@ if(mysqli_num_rows($q) == 1){
     //get groupName
     $row = mysqli_fetch_array($q);
     $gn = $row['gName'];
-    print_r($gIdd);
+    // print_r($gn);
     
 
     //group exists//////
     $arr = array(
         'status' => true,
+        'groupName' => $gn,
         'msg' => 'group exists' ,
     );
     

@@ -149,67 +149,68 @@
 
                 <div class="col-12 col-md-9">
                     <h4>店家名稱</h4>
-                    <input type="text" class="form-controlMy" placeholder="Shop name" required>
-                    <P></P>
+                    <input type="text" id="shopName" class="form-controlMy" placeholder="Shop name">
+                    <P id="shopNameMsg"></P>
                     <br>
 
                     <h4>餐點內容</h4>
-                    <input type="text" class="form-controlMy" placeholder="Food" required>
-                    <P></P>
+                    <input type="text" id="foodName" class="form-controlMy" placeholder="Food">
+                    <P id="foodNameMsg"></P>
                     <br>
 
                     <h4>用餐時段</h4>
-                    <input type="radio" name="period" value="Breakfast" style="width: 7%; height: 25px;">
+                    <input type="radio" name="mealTime" value="breakfast" style="width: 7%; height: 25px;">
                     <i class="bi bi-brightness-alt-high">Breakfast</i>
-                    <input type="radio" name="period" value="Lunch" style="width: 7%; height: 25px;">
+                    <input type="radio" name="mealTime" value="lunch" style="width: 7%; height: 25px;">
                     <i class="bi bi-brightness-high">Lunch</i>
-                    <input type="radio" name="period" value="Dinner" style="width: 7%; height: 25px;">
+                    <input type="radio" name="mealTime" value="dinner" style="width: 7%; height: 25px;">
                     <i class="bi bi-cloud-moon">Dinner</i>
-                    <input type="radio" name="period" value="NightMeal" style="width: 7%; height: 25px;">
+                    <input type="radio" name="mealTime" value="nightMeal" style="width: 7%; height: 25px;">
                     <i class="bi bi-moon">Night Meal</i>
-                    <input type="radio" name="period" value="Other" style="width: 7%; height: 25px;">
+                    <input type="radio" name="mealTime" value="other" style="width: 7%; height: 25px;">
                     <i class="bi bi-emoji-wink">Other</i>
 
-                    <P></P>
+                    <P id="mealTimeMsg"></P>
                     <br>
 
                     <h4>餐點數量</h4>
-                    <input type="number" class="form-controlMy" min="1" placeholder="(份)">
-                    <P></P>
+                    <input type="number" id="foodCount" class="form-controlMy" min="1" placeholder="(份)">
+                    <P id="foodCountMsg"></P>
                     <br>
 
                     <h4>餐點熱量</h4>
-                    <input type="number" class="form-controlMy" min="0" placeholder=" (cal)">
-                    <P></P>
+                    <input type="number" id="foodCal" class="form-controlMy" min="0" placeholder=" (cal)">
+                    <P id="foodCalMsg"></P>
                     <br>
 
                     <h4>餐點金額</h4>
-                    <input type="number" class="form-controlMy" min="0" placeholder="$(元)">
-                    <P></P>
+                    <input type="number" id="foodCost" class="form-controlMy" min="0" placeholder="$(元)">
+                    <P id="foodCostMsg"></P>
                     <br>
 
                     <h4>餐點評分</h4>
-                    <input type="range" max="5" min="1">
-                    <P></P>
+                    <input type="range" id="foodPoint" value="5" max="5" min="1">
+                    <P id="foodPointMsg"></P>
                     <br>
 
                     <h4>餐點圖片</h4>
-                    <input type="file" accept="image/*">
-                    <P></P>
+                    <input type="file" id="foodImg" accept="image/*">
+                    <P id="foodImgMsg"></P>
                     <br>
 
                     <h4>用餐日期</h4>
                     <!-- 日期的格式為 yyyy-mm-dd -->
-                    <input type="date" class="form-controlMy">
-                    <P></P>
+                    <input type="date" id="mealDate" class="form-controlMy">
+                    <P id="mealDateMsg"></P>
                     <br>
 
                     <h4>備註</h4>
-                    <textarea rows="3" class="info_textarea" placeholder="Something want to say..."></textarea>
-                    <P></P>
+                    <textarea rows="3" id="foodNote" class="info_textarea" placeholder="Something want to say..."></textarea>
+                    <P id="foodNoteMsg"></P>
 
                     <div class="text-center" style="padding:5%">
-                        <a href="#" class="btn sonar-btn">S a v e</a>
+                        <p id="errorMsg"></p>
+                        <a href="javascript: void(0)" id="save-btn" class="btn sonar-btn">S a v e</a>
                     </div>
                 </div>
 

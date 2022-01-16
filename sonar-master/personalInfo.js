@@ -16,6 +16,39 @@ function initial(){
         $(".section-heading h2").html("請先登入");
     }
     else{ // 已登入
+        // get user info
+        /* 
+        ***********************************************************
+        (post)
+        {
+            "act": "userInfo",
+            "mId": mId
+        }
+
+        (get)
+        {
+            "status": true/ false, 
+            "msg": "Successfully get."/ "Could not find the user data.",
+            "account": "abc111",
+            "password": "123456",
+            "name": "陳小明",
+            "gender": 'F'/ 'M',
+            "age": 22,
+            "weight": 48.6, 
+            "goal": ["目標1", "目標2", "目標3", "目標4", "目標5"]
+        }
+        ***********************************************************
+        */
+        let data= {"status": true, 
+                    "account": "abc1112",
+                    "password": "aaa1234",
+                    "name": "陳小明",
+                    "gender": "F",
+                    "age": 22,
+                    "weight": 48.6, 
+                    "goal": ["目標1<br>換行1", "目標2", "目標3", "目標4"]
+                };
+
         // let cmd= {"act": "userInfo", "mId": mId, "loadTimes": 1};
         // $.post("updateuserdata.php", cmd, function (data){
             // data= JSON.parse(data);
@@ -31,9 +64,9 @@ function initial(){
                 $("#password").val(data.password);
                 $("#confirmPassward").val(data.password);
                 
-                $("#genderMsg").html(data.gender== 'F'? "female": "male"); // 性別
-                $("input[name= sex][value= '"+ data.gender+ "']").attr('checked', true); //radio 賦值
-                
+                $("#genderMsg").html(data.gender== "F"? "female": "male"); // 性別
+                $("input[name= \"sex\"][value= \""+ data.gender+ "\"]").attr("checked", true); //radio 賦值
+
                 $("#weightMsg").html(data.weight.toString()+ " (KG)"); // 體重
                 $("#weight").val(data.weight);
                 
@@ -67,38 +100,6 @@ function initial(){
                 $(".section-heading h2").html("Error...請稍後重試");
             }
         // });
-        // get user info
-        /* 
-        ***********************************************************
-        (post)
-        {
-            "act": "userInfo",
-            "mId": mId
-        }
-
-        (get)
-        {
-            "status": true/ false, 
-            "msg": "Successfully get."/ "Could not find the user data.",
-            "account": "abc111",
-            "password": "123456",
-            "name": "陳小明",
-            "gender": 'F'/ 'M',
-            "age": 22,
-            "weight": 48.6, 
-            "goal": ["目標1", "目標2", "目標3", "目標4", "目標5"]
-        }
-        ***********************************************************
-        */
-        let data= {"status": true, 
-                    "account": "abc1112",
-                    "password": "aaa1234",
-                    "name": "陳小明",
-                    "gender": 'M',
-                    "age": 22,
-                    "weight": 48.6, 
-                    "goal": ["目標1<br>換行1", "目標2", "目標3", "目標4"]
-                };
     }
 }
 
@@ -140,9 +141,6 @@ $("#save-info-btn").click(function (){
                 "age": weightNum,
                 "weight": ageNum};
         console.log(cmd);
-        $.post("updateuserdata.php", cmd, function (data){
-            data= JSON.parse(data);
-            console.log(data);
         // edit user info
         /* 
         ***********************************************************
@@ -164,7 +162,10 @@ $("#save-info-btn").click(function (){
         }
         ***********************************************************
         */
-        // let data= {"status": true};
+        // $.post("updateuserdata.php", cmd, function (data){
+        //     data= JSON.parse(data);
+        //     console.log(data);
+            let data= {"status": true};
             if(data.status== true){
                 $(".contact-form").hide();
                 $("#save-info-btn").hide();
@@ -175,7 +176,7 @@ $("#save-info-btn").click(function (){
             else{
                 $("erroeMsg").html("error");
             }
-        });
+        // });
     }
 });
 
@@ -222,16 +223,20 @@ $("#save-goal-btn").click(function (){
     }
     ***********************************************************
     */
-    let data= {"status": true};
-    if(data.status== true){
-        $(".goal_textarea-control").hide();
-        $("#edit-goal-btn").html("修&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;改");
-        controlEditGoal= 0;
-        // location.reload();
-    }
-    else{
-        $("errorMsg-goal").html("error");
-    }
+    $.post("updateuserdata.php", cmd, function (data){
+        data= JSON.parse(data);
+
+        // let data= {"status": true};
+        if(data.status== true){
+            $(".goal_textarea-control").hide();
+            $("#edit-goal-btn").html("修&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;改");
+            controlEditGoal= 0;
+            // location.reload();
+        }
+        else{
+            $("errorMsg-goal").html("error");
+        }
+    });
 });
 
 $("#password").focusout(function (){
@@ -242,7 +247,6 @@ $("#confirmPassward").focusout(function (){
     var confirmPwStr= $("#confirmPassward").val();
     var result= DoubleCheckPassword(confirmPwStr);
 });
-
 
 function checkPassword(pwStr){
     var regexp= /^\w{6,12}$/

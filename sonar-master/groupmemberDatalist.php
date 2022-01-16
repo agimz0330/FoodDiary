@@ -2,7 +2,7 @@
 
 
     // $mId = $_POST['mId'];
-    //  $gname = $_POST['groupName'];
+     $gname = $_POST['groupName'];
 
     // $mId = 'fd000001';
     

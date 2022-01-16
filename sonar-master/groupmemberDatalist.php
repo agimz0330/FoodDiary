@@ -2,9 +2,11 @@
 
 
     // $mId = $_POST['mId'];
-     $gname = $_POST['groupName'];
+    //  $gname = $_POST['groupName'];
 
     // $mId = 'fd000001';
+    
+    // $gname = '海大203';
     // $gname = '幸福一家人';
 
     //conn
@@ -18,6 +20,15 @@
     mysqli_set_charset($db, "utf8");
     //conn end
     //////////////////////////////////////////
+    //Countgroupmember
+    $q5 = mysqli_query($db,"SELECT COUNT(mId) FROM joingroup NATURAL JOIN mygroup WHERE mygroup.gName='$gname' GROUP BY mygroup.groupId");
+    $row3 = mysqli_fetch_array($q5);
+    // print_r($row3);
+    // echo $row3[0];
+    $countmem = $row3[0];
+    // echo $countmem;
+    //
+
 
 
 
@@ -75,6 +86,7 @@
             'status' => true,
             'msg' =>"Successfully show group list.",
             'grouplist' => $record_arr,
+            'countmem'  => $countmem,
         );
     }else{
         echo "Failed!";
@@ -86,5 +98,5 @@
     }     
 
     print_r(json_encode($arr));
-
+    //如 {"mId":"fd000002","account":"98981111","nickName":"fd000002","gender":"M","age":"33","weight":"45.00","target":"\u559d\u6c343000 cc,\u559d\u6c342000 cc"},
 ?>

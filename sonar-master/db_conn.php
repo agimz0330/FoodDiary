@@ -11,15 +11,21 @@
     }
     mysqli_set_charset($db, "utf8"); //設定編碼
     // mysqli_select_db($db, "test");//連線狀態中更換資料庫
-    $mid = "11112111";
-    $one = "21";
-    $two = "2";
-    $thr = "3";
-    $four = '"m"';
-    $age = "3";
-    $weight = "10";
+    // $mid = "11112111";
+    // $one = "21";
+    // $two = "2";
+    // $thr = "3";
+    // $four = '"m"';
+    // $age = "3";
+    // $weight = "10";
 
     //update
+    // $del = "UPDATE member SET age=200 WHERE mid=11112111";
+    // $qqq = mysqli_query($db,$del);
+    // if($qqq){
+    //     echo "oh";
+    // }
+    // else echo $db->error;
     // $del = "UPDATE member SET age=200 WHERE mid=11112111";
     // $qqq = mysqli_query($db,$del);
     // if($qqq){
@@ -35,6 +41,18 @@
     // }
     // else echo $db->error;
 
+
+    $mId ='fd000001' ;
+    $shopname ='可不可' ;
+    $foodname ='珍珠鮮奶茶' ;
+    $mealtime ='n' ;
+    $foodcount ='2';
+    $foodcal ='600' ;
+    $foodcost ='110';
+    $foodpoint ='4' ;
+    $foodimg ='' ;
+    $mealdate = '20220116' ;
+    $foodnote ='好喝' ;
     //insert
     // $ins = "INSERT INTO member (mId,account,password,nickName,gender) VALUES ($mid,$one,$two,$thr,$four)";
     // $qq = mysqli_query($db,$ins);
@@ -42,7 +60,16 @@
     //     echo "no";
     // }
     // else echo $db->error;
-        
+    ////////try myself
+    // $ins = "INSERT INTO food (mId,shopName,foodName,foodCal,foodCost,foodPoint,foodImg,foodNote) VALUES ('$mId','$shopname','$foodname','$foodcal','$foodcost','$foodpoint','$foodimg','$foodnote')";
+    // $qq = mysqli_query($db,$ins);
+
+    // $ins2 = "INSERT INTO record (mId,shopName,foodName,mealDate,foodCount,mealTime) VALUES ('$mId','$shopname','$foodname','$mealdate','$foodcount','$mealtime')";
+    // $qqq = mysqli_query($db,$ins2);
+    // if($qq){
+    //     echo "ohhh";
+    // }
+    // else echo $db->error;
 
     //select
     // // Sql = "SELECT * FROM 資料表1 INNER JOIN 資料表2 ON 資料表1.class = 資料表2.class"

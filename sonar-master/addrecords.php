@@ -1,11 +1,29 @@
 <?php
-//NotYet
-//$mId = $_POST['mId'];
-//$loadtimes = $_POST['loadTimes'];
-// $mId = 'fd000001';
-// $loadtimes = 1;
-////要先確認food裡有沒有了!!!
 
+$mId = $_POST['mId'];
+$shopname = $_POST['shopName'];
+$foodname = $_POST['foodName'];
+$mealtime = $_POST['mealTime'];
+$foodcount = $_POST['foodCount'];
+$foodcal = $_POST['foodCal'];
+$foodcost = $_POST['foodCost'];
+$foodpoint = $_POST['foodPoint'];
+$foodimg = $_POST['foodImg'];
+$mealdate = $_POST['mealDate'];
+$foodnote = $_POST['foodNote'];
+
+// $mId ='fd000010' ;
+// $shopname ='迷克夏' ;
+// $foodname ='珍珠紅茶拿鐵' ;
+// $mealtime ='e' ;
+// $foodcount ='1';
+// $foodcal ='600' ;
+// $foodcost ='30';
+// $foodpoint ='1' ;
+// $foodimg ='' ;
+// $mealdate = '20220321' ;
+// $foodnote ='老闆忘記幫我加珍珠' ;
+//////////////////////////////////////////
 require_once 'server.php';
 
 $db = mysqli_connect($serverName, $userName, $password, $databaseName);
@@ -15,59 +33,66 @@ exit();
 }
 mysqli_set_charset($db, "utf8");
 
-$q = mysqli_query($db,"SELECT * FROM food NATURAL JOIN record  WHERE food.mId='$mId'");
-if($q){
-    $times = $q->num_rows;
-    if($times <= 0 ){
-        $arr = array(
-            'status' => false,
-            'msg' => "Can't show post." ,
-        );       
-    } else{
-        /////////////////////////////////////////////////
-        // $array2=array();
-        // for($i=0;$i<$q->num_rows;$i++){
-        //     $row = mysqli_fetch_array($q);
-        //     // print_r($row);
-        //     // $log=array("mId"=>"$row[0]","foodName"=>"$row[1]","shopName"=>"$row[2]","foodCal"=>"$row[3]","foodCost"=>"$row[4]","foodPoint"=>"$row[5]","foodImg"=>"$row[6]","foodNote"=>"$row[7]","mealDate"=>"$row[8]","foodCount"=>"$row[9]","mealTime"=>"$row[10]");
-        //     //!! =>   !!需要雙引號?!
-        //     $log=array("foodName"=>$row[1],"shopName"=>$row[2],"mealTime"=>$row[10],"foodCount"=>$row[9], "foodCost"=>$row[4],"foodCal"=>$row[3], "foodPoint"=>$row[5], "foodNote"=>$row[7], "foodImg"=>$row[6], "mealDate"=>$row[8]);
-        //     $arrary2[$i]=$log;
-        // }
-        //// print_r($array2);
-        ////////////////////////////////////////////////
-        if( $times <= ($loadtimes-1)*8 ){
-            $arr = array(
-                'status' => false,
-                'msg' => "沒有此頁." ,
-            );
-        }else{
-            $record_arr = array();
-            for( $i = 0 ; $i<$times ; $i++ ){
-                $row = mysqli_fetch_array($q);
-                if($i < ($loadtimes-1)*8){
-                    continue;
-                }else if($i >= $loadtimes*8){
-                    break;
-                }else{
-                    $record=array("foodName"=>$row[1],"shopName"=>$row[2],"mealTime"=>$row[10],"foodCount"=>$row[9], "foodCost"=>$row[4],"foodCal"=>$row[3], "foodPoint"=>$row[5], "foodNote"=>$row[7], "foodImg"=>$row[6], "mealDate"=>$row[8]);
-                    array_push($record_arr, $record);
-                }
-            }
+////要先確認food裡有沒有了!!!
+// $ins = "INSERT INTO food (mId,shopName,foodName,foodCal,foodCost,foodPoint,foodImg,foodNote) VALUES ('$mId','$shopname','$foodname','$foodcal','$foodcost','$foodpoint','$foodimg','$foodnote')";
+// $ins = "INSERT INTO food (mId,shopName,foodName,foodCal,foodCost,foodPoint,foodImg,foodNote) VALUES ('$mId','$shopname','$foodname','$foodcal','$foodcost','$foodpoint','$foodimg','$foodnote') WHERE NOT EXISTS (SELECT mId,shopName,foodName FROM food WHERE mid='$mId' AND shopName='$shopname' AND foodName='$foodname');";
+
+$q = mysqli_query($db,"SELECT mId,shopName,foodName FROM food WHERE mId='$mId' AND shopName='$shopname' AND foodName='$foodname'");
+
+if(mysqli_num_rows($q)<1)
+{
+    $ins = "INSERT INTO food (mId,shopName,foodName,foodCal,foodCost,foodPoint,foodImg,foodNote) VALUES ('$mId','$shopname','$foodname','$foodcal','$foodcost','$foodpoint','$foodimg','$foodnote')";
+    $qq = mysqli_query($db,$ins);
+    if($qq){ //$qq success   
+        $ins2 = "INSERT INTO record (mId,shopName,foodName,mealDate,foodCount,mealTime) VALUES ('$mId','$shopname','$foodname','$mealdate','$foodcount','$mealtime')";
+        $qqq = mysqli_query($db,$ins2);   
+
+        if($qqq){
+            echo "yap1";
             $arr = array(
                 'status' => true,
-                'msg' =>"Successfully show home page.",
-                'recordPost' => $record_arr,
+            );
+        }else{
+            echo "Insert record failed1";
+            $arr = array(
+                'status' => false,
+                'msg' => "Insert record failed",
             );
         }
+        
+    }else{
+        echo "Insert food failed1";
+        $arr = array(
+            'status' => false,
+            'msg' => "Insert food failed",
+        );
     }
-}
-else{
+    
+}else if(mysqli_num_rows($q) == 1){
+    $ins2 = "INSERT INTO record (mId,shopName,foodName,mealDate,foodCount,mealTime) VALUES ('$mId','$shopname','$foodname','$mealdate','$foodcount','$mealtime')";
+    $qqq = mysqli_query($db,$ins2);
+    if($qqq){
+        echo "success2";
+        $arr = array(
+            'status' => true,
+        );
+    }else{
+        echo "Insert record failed2";
+        $arr = array(
+            'status' => false,
+            'msg' => "Insert record failed",
+        );
+    }
+}else{
+    echo "no333";
+    echo $db->error;
     $arr = array(
         'status' => false,
         'msg' => $db->error,
     );
 }
+
+
 // print($arr);
 print_r(json_encode($arr));
 ?>

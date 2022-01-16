@@ -1,9 +1,12 @@
 <?php
 
+//connect
 session_start();
 $acc = $_POST['account'];
 $pwd = $_POST['password'];
 
+
+////////////////////////////////////////////////////////////////////////////////
 require_once 'server.php';
 
 $db = mysqli_connect($serverName, $userName, $password, $databaseName);
@@ -13,6 +16,7 @@ exit();
 }
 mysqli_set_charset($db, "utf8");
 
+//////////////////////////////////////////////////////////////////////////////////
 $q = mysqli_query($db,"SELECT * FROM member WHERE account='$acc' AND password='$pwd'");
 
 if($q){

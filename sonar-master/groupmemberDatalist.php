@@ -1,7 +1,12 @@
 <?php
+    //notYet
+    //groupmemberDatalist.php     //goal.php
 
     $mId = $_POST['mId'];
-    // $mId ='fd000010';
+    $gname = $_POST['groupName'];
+
+    // $mId = 'fd000001';
+    // $gname = '海大203';
 
     //conn
     require_once 'server.php';
@@ -14,7 +19,8 @@
     mysqli_set_charset($db, "utf8");
     //conn end
 
-    $q = mysqli_query($db,"SELECT * FROM mygroup NATURAL JOIN joingroup  WHERE mygroup.groupId= joingroup.groupId AND joingroup.mId='$mId'");
+
+    $q = mysqli_query($db,"SELECT account,nickName, FROM mygroup NATURAL JOIN joingroup  WHERE mygroup.groupId= joingroup.groupId AND joingroup.mId='$mId'");
     if($q){
 
         $times = $q->num_rows;
@@ -41,5 +47,5 @@
     }     
 
     print_r(json_encode($arr));
-?>
 
+?>

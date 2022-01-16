@@ -20,12 +20,13 @@
     // $weight = "10";
 
     //update
-    // $del = "UPDATE member SET age=200 WHERE mid=11112111";
+    // $del = "UPDATE member SET age=23,weight=56.8 WHERE mid='fd000001' ";
     // $qqq = mysqli_query($db,$del);
     // if($qqq){
     //     echo "oh";
     // }
     // else echo $db->error;
+
     // $del = "UPDATE member SET age=200 WHERE mid=11112111";
     // $qqq = mysqli_query($db,$del);
     // if($qqq){

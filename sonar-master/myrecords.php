@@ -1,8 +1,8 @@
 <?php
-// $mId = $_POST['mId'];
-// $loadtimes = $_POST['loadTimes'];
-$mId = 'fd000002';
-$loadtimes = '1';
+$mId = $_POST['mId'];
+$loadtimes = $_POST['loadTimes'];
+// $mId = 'fd000002';
+// $loadtimes = '1';
 
 require_once 'server.php';
 

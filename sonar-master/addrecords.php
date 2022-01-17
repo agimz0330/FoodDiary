@@ -48,12 +48,12 @@ if(mysqli_num_rows($q)<1)
         $qqq = mysqli_query($db,$ins2);   
 
         if($qqq){
-            echo "yap1";
+            // echo "yap1";
             $arr = array(
                 'status' => true,
             );
         }else{
-            echo "Insert record failed1";
+            // echo "Insert record failed1";
             $arr = array(
                 'status' => false,
                 'msg' => "Insert record failed",
@@ -61,7 +61,7 @@ if(mysqli_num_rows($q)<1)
         }
         
     }else{
-        echo "Insert food failed1";
+        // echo "Insert food failed1";
         $arr = array(
             'status' => false,
             'msg' => "Insert food failed",
@@ -72,19 +72,19 @@ if(mysqli_num_rows($q)<1)
     $ins2 = "INSERT INTO record (mId,shopName,foodName,mealDate,foodCount,mealTime) VALUES ('$mId','$shopname','$foodname','$mealdate','$foodcount','$mealtime')";
     $qqq = mysqli_query($db,$ins2);
     if($qqq){
-        echo "success2";
+        // echo "success2";
         $arr = array(
             'status' => true,
         );
     }else{
-        echo "Insert record failed2";
+        // echo "Insert record failed2";
         $arr = array(
             'status' => false,
             'msg' => "Insert record failed",
         );
     }
 }else{
-    echo "no333";
+    // echo "no333";
     echo $db->error;
     $arr = array(
         'status' => false,

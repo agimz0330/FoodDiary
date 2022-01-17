@@ -250,7 +250,8 @@ $("#save-btn").click(function(){
         */
         // let data= {"status": true, "msg": "Can't add."};
         if(data.status== true){
-            location.href = "home.html";
+            console.log(cmd);
+            // location.href = "home.html";
         }
         else{
             $("#errorMsg").css("color", "brown");

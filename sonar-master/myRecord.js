@@ -11,27 +11,27 @@ function initial(){
     if(mId== null){ // 未登入
         sessionStorage.setItem("mId", "fdtest01");
     }
-    let data= { //test
-        "status": true, 
-        "info": "Successfully show home page.",
-        "recordPost": [ // 8格
-            {"foodName": "餐點", 
-            "shopName": "店家", 
-            "mealTime": "b", 
-            "foodCount": 1, 
-            "foodCost": 200, 
-            "foodCal": 1200, 
-            "foodPoint": 3, 
-            "foodNote": "備註備註備註備註備註備註", 
-            "foodImg": "img/portfolio-img/1.jpg", 
+    // let data= { //test
+    //     "status": true, 
+    //     "info": "Successfully show home page.",
+    //     "recordPost": [ // 8格
+    //         {"foodName": "餐點", 
+    //         "shopName": "店家", 
+    //         "mealTime": "b", 
+    //         "foodCount": 1, 
+    //         "foodCost": 200, 
+    //         "foodCal": 1200, 
+    //         "foodPoint": 3, 
+    //         "foodNote": "備註備註備註備註備註備註", 
+    //         "foodImg": "img/portfolio-img/1.jpg", 
             
-            "mealDate": "2012-07-03"}
-        ]
-    };
+    //         "mealDate": "2012-07-03"}
+    //     ]
+    // };
 
-    // let cmd= {"act": "getRecord", "mId": mId, "loadTimes": 1};
-    // $.post("myrecords.php", cmd, function (data){
-    //     data= JSON.parse(data);
+    let cmd= {"act": "getRecord", "mId": mId, "loadTimes": 1};
+    $.post("myrecords.php", cmd, function (data){
+        data= JSON.parse(data);
 
         if(data.status== true){
             $("#errorMsg").html("");
@@ -101,7 +101,7 @@ function initial(){
         else{
             $("#errorMsg").html(data.msg);
         }
-    // });
+    });
     /* 
     ***********************************************************
     (post)
@@ -129,25 +129,25 @@ $("#recordLoadmore").click(function (){
     var mId= sessionStorage.getItem("mId");
     let cmd= {"act": "getRecord", "mId": mId, "loadTimes": loadTimes};
 
-    let data= { //test
-        "status": true, 
-        "info": "Successfully show home page.",
-        "recordPost": [ // 8格
-            {"foodName": "餐點2", 
-            "shopName": "店家2", 
-            "mealTime": "b", 
-            "foodCount": 1, 
-            "foodCost": 200, 
-            "foodCal": 1200, 
-            "foodPoint": 3, 
-            "foodNote": "備註備註備註備註備註備註", 
-            "foodImg": "img/portfolio-img/1.jpg", 
-            "mealDate": "2012-07-03"}
-        ]
-    };
+    // let data= { //test
+    //     "status": true, 
+    //     "info": "Successfully show home page.",
+    //     "recordPost": [ // 8格
+    //         {"foodName": "餐點2", 
+    //         "shopName": "店家2", 
+    //         "mealTime": "b", 
+    //         "foodCount": 1, 
+    //         "foodCost": 200, 
+    //         "foodCal": 1200, 
+    //         "foodPoint": 3, 
+    //         "foodNote": "備註備註備註備註備註備註", 
+    //         "foodImg": "img/portfolio-img/1.jpg", 
+    //         "mealDate": "2012-07-03"}
+    //     ]
+    // };
 
-    // $.post("myrecords.php", cmd, function (data){
-    //     data= JSON.parse(data);
+    $.post("myrecords.php", cmd, function (data){
+        data= JSON.parse(data);
         if(data.status== true){
             $("#errorMsg").html("");
     
@@ -159,7 +159,7 @@ $("#recordLoadmore").click(function (){
                                     "<a class=\"gallery-img\" href=\"";
                 onePost+= recordPost[i].foodImg+ "\"><img src=\""+ recordPost[i].foodImg; // 餐點圖片?????
                 onePost+= "\"></a><div class=\"post-date\"><a href=\"#\">";
-                
+
                 var mealDateStr= recordPost[i].mealDate; // 2012-07-03
                 var mealDate= "";
                 var monthStr= mealDateStr.substring(5, 7); // 07
@@ -216,7 +216,7 @@ $("#recordLoadmore").click(function (){
         else{
             $("#errorMsg").html(data.msg);
         }
-    // });
+    });
     /* 
     ***********************************************************
     (post)
@@ -269,8 +269,8 @@ $("#projects").on("click", ".edit-btn", function(e){ // 刪除一筆紀錄
         "mealDate": mealDate
     };
 
-    // $.post("addrecords.php", cmd, function (data){
-        //     data= JSON.parse(data);
+    $.post("deleterecord.php", cmd, function (data){
+            data= JSON.parse(data);
         let data= {"status": true, "msg": "Can't add."};
         if(data.status== true){
             loadTimes= 1;
@@ -281,7 +281,7 @@ $("#projects").on("click", ".edit-btn", function(e){ // 刪除一筆紀錄
             console.log("Can't load.");
         }
         // console.log(imgSrc);
-    // });
+    });
 
     /* 
     ***********************************************************

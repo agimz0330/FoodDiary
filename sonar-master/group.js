@@ -106,7 +106,7 @@ function initial(){
                 }
                 onePost+= groupPost[i].foodNote+ "</p></div></div>"; // 備註
 
-                $("groupPost").append(onePost);
+                $("#groupPost").append(onePost);
             }
             // for end.
         }

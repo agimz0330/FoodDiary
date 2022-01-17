@@ -137,7 +137,7 @@ function initial(){
     var data= { // test
         "status": true, 
         "msg": "Successfully show home page.",
-        "grouplist": ["groupname", "1g", "923", "我要吃肉肉"]
+        "grouplist": ["groupName", "1g", "923", "我要吃肉肉"]
     };
 
     let cmd= {"act": "groupList", "mId": mId};

@@ -270,8 +270,8 @@ $("#projects").on("click", ".edit-btn", function(e){ // 刪除一筆紀錄
     };
 
     $.post("deleterecord.php", cmd, function (data){
-            data= JSON.parse(data);
-        let data= {"status": true, "msg": "Can't add."};
+        data= JSON.parse(data);
+        // let data= {"status": true, "msg": "Can't add."};
         if(data.status== true){
             loadTimes= 1;
             // location.reload();

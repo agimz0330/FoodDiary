@@ -137,15 +137,15 @@ function initial(){
     var data= { // test
         "status": true, 
         "msg": "Successfully show home page.",
-        "groupList": ["groupname", "1g", "923", "我要吃肉肉"]
+        "grouplist": ["groupname", "1g", "923", "我要吃肉肉"]
     };
 
-    // let cmd= {"act": "groupList", "mId": mId};
-    // $.post("myrecords.php", cmd, function (data){
-    //     data= JSON.parse(data);
+    let cmd= {"act": "groupList", "mId": mId};
+    $.post("mygroupList.php", cmd, function (data){
+        data= JSON.parse(data);
 
         if(data.status== true){
-            var groupList= data.groupList;
+            var groupList= data.grouplist;
             for(var i= 0; i< groupList.length; i++){
                 $("#groupList").append("<li><a href=\"javascript: void(0)\">"+ groupList[i]+"</a></li>");
             }
@@ -153,7 +153,7 @@ function initial(){
         else{
 
         }
-    // });
+    });
     /* 
     ***********************************************************
     (post)
@@ -169,7 +169,7 @@ function initial(){
         "groupPost": [ // loadTimes x8 後的8格
             {"foodName": "餐點", "shopName": "店家", "mealTime": "b", "foodCount": 1, "foodCost": 50, "foodCal": 425, "foodPoint": (1~5), "foodNote": "備註", "foodImg": "???", "mealDate": "???"}, {}, {}, ...
         ],
-        "groupList": ["groupname", "1g", "923", ...]
+        "grouplist": ["groupname", "1g", "923", ...]
     }
     ***********************************************************
     */
@@ -183,17 +183,17 @@ $("#search-btn").click(function (){
 
     let cmd= {"act": "searchGroup", "mId": mId, "groupId": groupId};
     
-    // $.post("myrecords.php", cmd, function (data){
-    //     data= JSON.parse(data);
+    $.post("searchgroup.php", cmd, function (data){
+        data= JSON.parse(data);
 
-    if(data.status== true){
-        $("#searchResult").html("<i class=\"bi bi-record-fill\"> </i>"+ data.groupName);
-        $("#joinGroup").show();
-    }
-    else{
-        $("#noResult").show();
-    }
-    // });
+        if(data.status== true){
+            $("#searchResult").html("<i class=\"bi bi-record-fill\"> </i>"+ data.groupName);
+            $("#joinGroup").show();
+        }
+        else{
+            $("#noResult").show();
+        }
+    });
     /* 
     ***********************************************************
     (post)
@@ -226,19 +226,19 @@ $("#createGroup-btn").click(function (){
 
         let cmd= {"act": "group", "mId": mId, "groupName": groupName};
         
-        // $.post("myrecords.php", cmd, function (data){
-        //     data= JSON.parse(data);
+        $.post("createGroup.php", cmd, function (data){
+            data= JSON.parse(data);
 
-        if(data.status== true){
-            $("#createResult").html("<i class=\"bi bi-circle\"> </i>創建群組成功");
-            $("#createResult").css("color", "green");
-            $("#groupList").append("<li><a href=\"javascript: void(0)\">"+ groupName+"</a></li>");
-        }
-        else{
-            $("#createResult").html("<i class=\"bi bi-x-lg\"> </i>無法創建此群組");
-            $("#createResult").css("color", "red");
-        }
-        // });
+            if(data.status== true){
+                $("#createResult").html("<i class=\"bi bi-circle\"> </i>創建群組成功");
+                $("#createResult").css("color", "green");
+                $("#groupList").append("<li><a href=\"javascript: void(0)\">"+ groupName+"</a></li>");
+            }
+            else{
+                $("#createResult").html("<i class=\"bi bi-x-lg\"> </i>無法創建此群組");
+                $("#createResult").css("color", "red");
+            }
+        });
         /* 
         ***********************************************************
         (post)
@@ -273,19 +273,19 @@ $("#joinGroup").click(function (){
 
     let cmd= {"act": "joinGroup", "mId": mId, "groupId": groupId};
     
-    // $.post("myrecords.php", cmd, function (data){
-    //     data= JSON.parse(data);
+    $.post("joingroup.php", cmd, function (data){
+        data= JSON.parse(data);
 
-    if(data.status== true){
-        var groupName= $("#searchResult").text().substring(1,);
-        console.log(groupName);
-        sessionStorage.setItem("groupName", groupName);
-        location.href = "groupData.html";
-    }
-    else{
-        $("#noResult").show();
-    }
-    // });
+        if(data.status== true){
+            var groupName= $("#searchResult").text().substring(1,);
+            console.log(groupName);
+            sessionStorage.setItem("groupName", groupName);
+            location.href = "groupData.html";
+        }
+        else{
+            $("#noResult").show();
+        }
+    });
     /* 
     ***********************************************************
     (post)

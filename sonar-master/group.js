@@ -266,19 +266,19 @@ $("#groupList").on("click", "a", function(e){
 });
 
 $("#joinGroup").click(function (){
+    var groupName= $("#searchResult").text().substring(1,);
     var groupId= $("#searchGroupId").val();
     var mId= sessionStorage.getItem("mId");
     
-    let data= {"status": true, "msg": "Successfully join a group."}; // test
+    // let data= {"status": true, "msg": "Successfully join a group."}; // test
 
-    let cmd= {"act": "joinGroup", "mId": mId, "groupId": groupId};
+    let cmd= {"act": "joinGroup", "mId": mId, "groupName": groupName};
     
     $.post("joingroup.php", cmd, function (data){
         data= JSON.parse(data);
 
         if(data.status== true){
-            var groupName= $("#searchResult").text().substring(1,);
-            console.log(groupName);
+            // console.log(groupName);
             sessionStorage.setItem("groupName", groupName);
             location.href = "groupData.html";
         }

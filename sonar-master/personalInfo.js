@@ -49,7 +49,7 @@ function initial(){
         //             "goal": ["目標1<br>換行1", "目標2", "目標3", "目標4"]
         //         };
 
-        let cmd= {"act": "userInfo", "mId": mId, "loadTimes": 1};
+        let cmd= {"act": "userInfo", "mId": mId};
         $.post("userdata.php", cmd, function (data){
             data= JSON.parse(data);
 
@@ -74,15 +74,18 @@ function initial(){
                 $("#age").val(data.age);
                 
                 $(".section-heading h2").html("個人目標");
+
+                var goalList= data.goal.split("&");
+                console.log(goalList);
     
                 for(var i= 0; i< 5; i++){
                     var aGoal= "";
-                    if(i>= data.goal.length){
+                    if(i>= goalList.length){
                         $("#inputGoal"+ (i+ 1).toString()).val(aGoal);
                         aGoal= "(未填寫)";
                     }
                     else{
-                        aGoal= data.goal[i];
+                        aGoal= goalList[i];
                         $("#inputGoal"+ (i+ 1).toString()).val(aGoal);
                     }
                     
@@ -140,7 +143,7 @@ $("#save-info-btn").click(function (){
                 "gender": genderStr,
                 "age": weightNum,
                 "weight": ageNum};
-        console.log(cmd);
+        // console.log(cmd);
         // edit user info
         /* 
         ***********************************************************
@@ -165,13 +168,13 @@ $("#save-info-btn").click(function (){
         $.post("updateuserdata.php", cmd, function (data){
             data= JSON.parse(data);
             // console.log(data);
-            let data= {"status": true};
+            // let data= {"status": true};
             if(data.status== true){
                 $(".contact-form").hide();
                 $("#save-info-btn").hide();
                 controlEditInfo= 0;
                 $("#edit-info-btn").html("修&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;改");
-                // location.reload();
+                location.reload();
             }
             else{
                 $("erroeMsg").html("error");
@@ -231,7 +234,7 @@ $("#save-goal-btn").click(function (){
             $(".goal_textarea-control").hide();
             $("#edit-goal-btn").html("修&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;改");
             controlEditGoal= 0;
-            // location.reload();
+            location.reload();
         }
         else{
             $("errorMsg-goal").html("error");

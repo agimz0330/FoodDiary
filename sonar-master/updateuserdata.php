@@ -30,13 +30,13 @@ $q = mysqli_query($db,"UPDATE member SET age='$age',weight='$weight',password='$
 
 if($q)
 {
-    echo "update success!";
+    // echo "update success!";
     $arr = array(
        'status' => true,
     );
        
 }else{
-    echo "failed";
+    // echo "failed";
     echo $db->error;
     $arr = array(
         'status' => false,

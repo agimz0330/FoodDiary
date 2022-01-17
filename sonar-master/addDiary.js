@@ -70,39 +70,41 @@ function initial(){
         }
         ***********************************************************
         */
-       let data= { //test
-            "status": true, 
-            "info": "Successfully show home page.",
-            "hotFood": [ // 8格
-                {"foodName": "餐點", 
-                "shopName": "店家", 
-                "foodCost": 123, 
-                "foodCal": 1233, 
-                "foodNote": "備註3333333333備註3333333333備註3333333333備註3333333333", 
-                "foodImg": "img/bg-img/slide1.jpg"}
-            ]
-        };
-        if(data.status== true){
-            hotFood= data.hotFood;
-            for(var i= 0; i< hotFood.length; i++){
-                var onePost= "<div class=\"widget-single-blog-post d-flex align-items-start\">"+
-                                "<div class=\"widget-post-thumbnail pr-3\"><img src=\"";
-                onePost+= hotFood[i].foodImg+ "\" style=\"width: 70px;\">"; // 餐點圖片
-                onePost+= "</div><div class=\"widget-post-content\"><a href=\"javascript: void(0)\">";
-                onePost+= hotFood[i].shopName+ " <strong>"+ hotFood[i].foodName+ "</strong></a>"; // 店名+餐點名
-                onePost+= "<br><i class=\"fa fa-dollar\" style=\"color:darkgoldenrod\">"+ hotFood[i].foodCost; // 金額
-                onePost+= "元</i>&nbsp;<i class=\"fa fa-fire\" style=\"color:darkred\">"+ hotFood[i].foodCal; // 熱量
-                
-                var foodNote= hotFood[i].foodNote;
-                if(foodNote.length> 10) foodNote= foodNote.substring(0, 10)+ "... ...";
-                onePost+= " cal </i><p>"+ foodNote+ "</p></div></div>"; // 備註
 
-                $(".widget-blog-post").append(onePost);
-            }
-        }
-        else{
-            $(".widget-blog-post").html("...");
-        }
+        // 常吃餐點
+    //    let data= { //test
+    //         "status": true, 
+    //         "info": "Successfully show home page.",
+    //         "hotFood": [ // 8格
+    //             {"foodName": "餐點", 
+    //             "shopName": "店家", 
+    //             "foodCost": 123, 
+    //             "foodCal": 1233, 
+    //             "foodNote": "備註3333333333備註3333333333備註3333333333備註3333333333", 
+    //             "foodImg": "img/bg-img/slide1.jpg"}
+    //         ]
+    //     };
+    //     if(data.status== true){
+    //         hotFood= data.hotFood;
+    //         for(var i= 0; i< hotFood.length; i++){
+    //             var onePost= "<div class=\"widget-single-blog-post d-flex align-items-start\">"+
+    //                             "<div class=\"widget-post-thumbnail pr-3\"><img src=\"";
+    //             onePost+= hotFood[i].foodImg+ "\" style=\"width: 70px;\">"; // 餐點圖片
+    //             onePost+= "</div><div class=\"widget-post-content\"><a href=\"javascript: void(0)\">";
+    //             onePost+= hotFood[i].shopName+ " <strong>"+ hotFood[i].foodName+ "</strong></a>"; // 店名+餐點名
+    //             onePost+= "<br><i class=\"fa fa-dollar\" style=\"color:darkgoldenrod\">"+ hotFood[i].foodCost; // 金額
+    //             onePost+= "元</i>&nbsp;<i class=\"fa fa-fire\" style=\"color:darkred\">"+ hotFood[i].foodCal; // 熱量
+                
+    //             var foodNote= hotFood[i].foodNote;
+    //             if(foodNote.length> 10) foodNote= foodNote.substring(0, 10)+ "... ...";
+    //             onePost+= " cal </i><p>"+ foodNote+ "</p></div></div>"; // 備註
+
+    //             $(".widget-blog-post").append(onePost);
+    //         }
+    //     }
+    //     else{
+    //         $(".widget-blog-post").html("...");
+    //     }
         // });
     }
 }
@@ -218,8 +220,8 @@ $("#save-btn").click(function(){
         "mealDate": mealDate,
         "foodNote": foodNote
     };
-    // $.post("addrecords.php", cmd, function (data){
-        //     data= JSON.parse(data);
+    $.post("addrecords.php", cmd, function (data){
+            data= JSON.parse(data);
 
         // add a record
         /* 
@@ -246,16 +248,16 @@ $("#save-btn").click(function(){
         }
         ***********************************************************
         */
-        let data= {"status": true, "msg": "Can't add."};
+        // let data= {"status": true, "msg": "Can't add."};
         if(data.status== true){
-            // location.href = "home.html";
+            location.href = "home.html";
         }
         else{
             $("#errorMsg").css("color", "brown");
             $("#errorMsg").html("Something wrong..."); // 
         }
         // console.log(imgSrc);
-    // });
+    });
 });
 
 $(".widget-blog-post").on("click", "a", function(e){ // 點擊常吃餐點

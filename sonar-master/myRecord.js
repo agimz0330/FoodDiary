@@ -239,6 +239,7 @@ $("#recordLoadmore").click(function (){
 });
 
 $("#projects").on("click", ".edit-btn", function(e){ // 刪除一筆紀錄
+    console.log("delete");
     var mId= sessionStorage.getItem("mId");
     var mealDateStr= $(this).siblings("div").children("a").text(); // 日期(Jan 01 '09)
     var mealDate= "20"+ mealDateStr.substring(8, 10)+ "-";
@@ -274,7 +275,7 @@ $("#projects").on("click", ".edit-btn", function(e){ // 刪除一筆紀錄
         // let data= {"status": true, "msg": "Can't add."};
         if(data.status== true){
             loadTimes= 1;
-            // location.reload();
+            location.reload();
         }
         else{
             $("#recordLoadmore").attr('disabled', true);

@@ -141,8 +141,8 @@ $("#save-info-btn").click(function (){
                 "password": pwStr,
                 "name": nameStr,
                 "gender": genderStr,
-                "age": weightNum,
-                "weight": ageNum};
+                "age": ageNum,
+                "weight": weightNum};
         // console.log(cmd);
         // edit user info
         /* 

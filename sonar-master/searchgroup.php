@@ -1,6 +1,8 @@
 <?php
 
-$groupId = $_POST['groupId'];
+$groupname = $_POST['groupName'];
+
+// echo $groupId
 // $groupId = 'gp000001';
 
 // $mId = $_POST['mId'];
@@ -20,7 +22,7 @@ mysqli_set_charset($db, "utf8");
 ///conn end
 
 //搜尋群組名稱是否存在
-$q = mysqli_query($db,"SELECT gName FROM mygroup WHERE groupId='$groupId'");
+$q = mysqli_query($db,"SELECT gName FROM mygroup WHERE gName='$groupname'");
 if(mysqli_num_rows($q) == 1){
     
 

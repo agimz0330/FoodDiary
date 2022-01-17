@@ -103,13 +103,15 @@ function initial(){
 }
 
 $("#search-btn").click(function (){
+    $("#searchResult").hide();
+    $("#joinGroup").hide();
     $("#noResult").hide();
-    var groupId= $("#searchGroupId").val();
+    var groupName= $("#searchGroupId").val();
     var mId= sessionStorage.getItem("mId");
     
-    let data= {"status": true, "msg": "Successfully create a group.", "groupName": "im a Group"}; // test
+    // let data= {"status": true, "msg": "Successfully create a group.", "groupName": "im a Group"}; // test
 
-    let cmd= {"act": "searchGroup", "mId": mId, "groupId": groupId};
+    let cmd= {"act": "searchGroup", "mId": mId, "groupName": groupName};
     
     $.post("searchgroup.php", cmd, function (data){
         data= JSON.parse(data);

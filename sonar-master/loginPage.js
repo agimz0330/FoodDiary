@@ -65,7 +65,7 @@ $("#confirmBtn").click(function (){
                 if(data.status== true){ // login success
                     $("#errorMsg").html("");
                     sessionStorage.setItem("mId", data.mId);
-                    location.href = "home.html";
+                    location.href = "addDiary.html";
                 }else{ // login failed
                     $("#passwordMsg").css("color", "brown");
                     $("#passwordMsg").html("帳號或密碼有誤！");
@@ -126,7 +126,7 @@ $("#confirmBtn").click(function (){
                 if(data.status== true){ // 註冊 success
                     $("#errorMsg").html("");
                     sessionStorage.setItem("mId", data.mId);
-                    location.href = "home.html";
+                    location.href = "addDiary.html";
                 }else{ // 註冊 failed
                     $("#confirmPasswardMsg").css("color", "brown");
                     $("#confirmPasswardMsg").html("error"); // 顯示錯誤訊息

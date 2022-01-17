@@ -38,14 +38,14 @@ if(mysqli_num_rows($q) == 1){
         $qqq = mysqli_query($db,"INSERT INTO joingroup (groupId,mId) VALUES ('$gIdd','$mId')"); //joinGroup
         if($qqq){
             //join success
-            echo "join success!";
+            // echo "join success!";
             $arr = array(
                 'status' => true,
                 'msg' => "join success!" ,
             ); 
         }else{
             //join failed
-            echo "join failed!";
+            // echo "join failed!";
             $arr = array(
                 'status' => false,
                 'msg' => "join failed!" ,
@@ -54,7 +54,7 @@ if(mysqli_num_rows($q) == 1){
 
      }else{
         //member already in the group
-        echo "member already in the group";
+        // echo "member already in the group";
         ///msg info
         $arr = array(
             'status' => false,
@@ -64,7 +64,7 @@ if(mysqli_num_rows($q) == 1){
 
 }else{
     //group does not exist
-    echo "group does not exist!";
+    // echo "group does not exist!";
     $arr = array(
         'status' => false,
         'msg' => "group does not exist!" ,

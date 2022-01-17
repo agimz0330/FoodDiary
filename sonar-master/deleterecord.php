@@ -1,11 +1,13 @@
 <?php
-// $mId = $_POST['mId'];
-// $shopname = $_POST['shopName'];
-// $foodname = $_POST['foodName'];
+$mId = $_POST['mId'];
+$shopname = $_POST['shopName'];
+$foodname = $_POST['foodName'];
+$date = $_POST['mealDate'];
 
-$mId = 'fd000001';
-$shopname = '天好茶';
-$foodname = '珍珠鮮奶';
+// $mId = 'fd000002';
+// $shopname = '珍煮丹';
+// $foodname = '黑糖珍珠鮮奶';
+// $date = '20220107';
 
 
 require_once 'server.php';
@@ -21,7 +23,7 @@ mysqli_set_charset($db, "utf8");
 //!!!!
 // $q = mysqli_query($db,"DELETE FROM food WHERE mid='$mId' AND  shopName='$shopname' AND  foodName='$foodname' ");
 ////還需要Date
-$q = mysqli_query($db,"DELETE FROM record WHERE mid='$mId' AND  shopName='$shopname' AND  foodName='$foodname' ");
+$q = mysqli_query($db,"DELETE FROM record WHERE mid='$mId' AND  shopName='$shopname' AND  foodName='$foodname' AND mealDate='$date' ");
 if($q){
     
         $arr = array(

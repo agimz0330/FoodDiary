@@ -176,6 +176,7 @@ function initial(){
 }
 
 $("#search-btn").click(function (){
+    $("#noResult").hide();
     var groupId= $("#searchGroupId").val();
     var mId= sessionStorage.getItem("mId");
     

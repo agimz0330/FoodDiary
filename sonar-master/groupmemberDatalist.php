@@ -76,17 +76,18 @@
         for( $i = 0 ; $i<$times ; $i++ ){
             $row = mysqli_fetch_array($q2);
             
-            $record=array("mId"=>$row[2],"account"=>$row[3],"nickName"=>$row[4],"gender"=>$row[5],"age"=>$row[6],"weight"=>$row[7],"target"=>$row[8],);
+            // $record=array("mId"=>$row[2],"account"=>$row[3],"nickName"=>$row[4],"gender"=>$row[5],"age"=>$row[6],"weight"=>$row[7],"target"=>$row[8],);
+            $record=array("account"=>$row[3],"nickname"=>$row[4]);
             array_push($record_arr, $record);
             // print_r($row);
         }
-        print_r($record_arr);
+        // print_r($record_arr);
 
         $arr = array(
             'status' => true,
             'msg' =>"Successfully show group list.",
-            'grouplist' => $record_arr,
-            'countmem'  => $countmem,
+            'memberData' => $record_arr,
+            'memberCount'  => $countmem,
         );
     }else{
         echo "Failed!";

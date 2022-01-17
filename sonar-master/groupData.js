@@ -22,8 +22,8 @@ function initial(){
     //     "memberCount": 3
     // };
 
-    let cmd= {"act": "group", "mId": mId, "groupName": groupName};
-    $.post("myrecords.php", cmd, function (data){
+    var cmd= {"act": "group", "mId": mId, "groupName": groupName};
+    $.post("groupmemberDatalist.php", cmd, function (data){
         data= JSON.parse(data);
 
         if(data.status== true){
@@ -67,8 +67,8 @@ function initial(){
 //         "groupList": ["groupname", "1g", "923", "我要吃肉肉"]
 //     };
 
-    let cmd= {"act": "groupList", "mId": mId};
-    $.post("myrecords.php", cmd, function (data){
+    var cmd= {"act": "groupList", "mId": mId};
+    $.post("mygroupList.php", cmd, function (data){
         data= JSON.parse(data);
 
         if(data.status== true){

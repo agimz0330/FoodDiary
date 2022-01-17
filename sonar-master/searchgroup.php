@@ -40,7 +40,7 @@ if(mysqli_num_rows($q) == 1){
 
 }else{
     //group does not exist
-    echo "group does not exist!";
+    // echo "group does not exist!";
     $arr = array(
         'status' => false,
         'msg' => "group does not exist!" ,

@@ -40,6 +40,7 @@ if(mysqli_num_rows($q)<1)
         $arr = array(
             'status' => true,
             'msg' => "success" ,
+            
         );
     }
 }else{

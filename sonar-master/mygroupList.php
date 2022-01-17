@@ -22,7 +22,7 @@
         $record_arr = array();
         for( $i = 0 ; $i<$times ; $i++ ){
             $row = mysqli_fetch_array($q);
-            $record=array("gName"=>$row[1]);
+            $record=$row[1];
             array_push($record_arr, $record);
         }
         // print_r($record_arr);

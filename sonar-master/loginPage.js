@@ -25,16 +25,16 @@ $("#chooseRegister").click(function (){
 });
 
 // 檢查輸入是否符合
-$("#account").focusout(function (){
-    var accStr= $("#account").val();
+// $("#account").focusout(function (){
+//     var accStr= $("#account").val();
     
-    if(act== "register"){ // 註冊
-        var result= checkAccount(accStr);
-    }
-    else{ // 登入
-        var result= isAccount(accStr);
-    }
-});
+//     if(act== "register"){ // 註冊
+//         var result= checkAccount(accStr);
+//     }
+//     else{ // 登入
+//         var result= isAccount(accStr);
+//     }
+// });
 $("#password").focusout(function (){
     if(act== "register"){ // 註冊
         var pwStr= $("#password").val();

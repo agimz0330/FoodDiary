@@ -39,19 +39,19 @@ function initial(){
         }
         ***********************************************************
         */
-        let data= {"status": true, 
-                    "account": "abc1112",
-                    "password": "aaa1234",
-                    "name": "陳小明",
-                    "gender": "F",
-                    "age": 22,
-                    "weight": 48.6, 
-                    "goal": ["目標1<br>換行1", "目標2", "目標3", "目標4"]
-                };
+        // let data= {"status": true, 
+        //             "account": "abc1112",
+        //             "password": "aaa1234",
+        //             "name": "陳小明",
+        //             "gender": "F",
+        //             "age": 22,
+        //             "weight": 48.6, 
+        //             "goal": ["目標1<br>換行1", "目標2", "目標3", "目標4"]
+        //         };
 
-        // let cmd= {"act": "userInfo", "mId": mId, "loadTimes": 1};
-        // $.post("updateuserdata.php", cmd, function (data){
-            // data= JSON.parse(data);
+        let cmd= {"act": "userInfo", "mId": mId, "loadTimes": 1};
+        $.post("userdata.php", cmd, function (data){
+            data= JSON.parse(data);
 
             if(data.status== true){
                 $("#nameMsg").html(data.name); // 暱稱
@@ -99,7 +99,7 @@ function initial(){
                 $(".testimonial-slides").html("<h6>Error...請稍後重試</h6><h4>Error...請稍後重試</h4><h2>Error...請稍後重試</h2><h5>Error...請稍後重試</h5><h1>Error...請稍後重試</h1><h3>Error...請稍後重試</h3><br><p>:(((</p>");
                 $(".section-heading h2").html("Error...請稍後重試");
             }
-        // });
+        });
     }
 }
 
@@ -162,9 +162,9 @@ $("#save-info-btn").click(function (){
         }
         ***********************************************************
         */
-        // $.post("updateuserdata.php", cmd, function (data){
-        //     data= JSON.parse(data);
-        //     console.log(data);
+        $.post("updateuserdata.php", cmd, function (data){
+            data= JSON.parse(data);
+            // console.log(data);
             let data= {"status": true};
             if(data.status== true){
                 $(".contact-form").hide();
@@ -176,7 +176,7 @@ $("#save-info-btn").click(function (){
             else{
                 $("erroeMsg").html("error");
             }
-        // });
+        });
     }
 });
 
@@ -223,7 +223,7 @@ $("#save-goal-btn").click(function (){
     }
     ***********************************************************
     */
-    $.post("updateuserdata.php", cmd, function (data){
+    $.post("updategoal.php", cmd, function (data){
         data= JSON.parse(data);
 
         // let data= {"status": true};
